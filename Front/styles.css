@@ -1,0 +1,113 @@
+
+/* Style the body */
+body {
+    font-family: Arial;
+    margin: 0;
+  }
+  
+  /* Header/logo Title */
+  .header {
+    padding: 60px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+  }
+
+  ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    display: block;
+    
+  }
+  
+  ul.navbar li {float: left;}
+  
+  ul.navbar li a {
+    display: inline-block;
+    color: white;
+    block-size: 36px;
+    text-align: center; 
+    padding: 25px 16px 14px 16px;
+    text-decoration: none;
+  }
+
+  
+  
+  ul.navbar li a:hover:not(.active) {background-color: #111;}
+  
+  ul.navbar li a.active {background-color: #4CAF50;}
+  
+  ul.navbar li.right {float: right;}
+
+
+  .icon { width:32px;
+          height:32px;
+          border:0;
+          
+  }
+
+  .buttonNavBar {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .navbar .search-container input[type=text] {
+    padding: 6px;
+    font-size: 17px;
+    border: none;
+  }
+
+
+.navbar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar .search-container {
+  float: right;
+  
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+  /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+
+    ul.navbar li.search-container {
+      float: none;
+    }
+
+     ul.navbar li.right,ul.navbar li.search-container button, ul.navbar li {   
+      flex-direction: column;
+      float : none;
+      text-align: center;
+    }
+
+    ul.navbar li.input {
+      border: 1px solid #ccc; 
+    }
+
+    
+   
+  }
+  
