@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <!-- Header -->
+  <div class="header">
+    <h1>La Corne d'abondance</h1>
+    <p>Vente de fruits et légumes belges</p>
+  </div>
+  
+  <!-- Navigation Bar -->
+  <ul class="navbar">
+    <li><a href="#home">Accueil</a></li>
+    <li class="dropdown">
+      <a href="#category">Categorie</a>
+      <div class="dropdown-content">
+          <a href="#catFruits">Fruits</a>
+          <a href="#catLegumes">Legumes</a>
+        </div></li>
+    <li><a class="active" href="#calendar">Calendrier</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li class="right"><a href="#frenchFlag"><img class="icon" src="image\french-flag.png" alt="frenchFlag"></a></li>   
+    <li class="right"><a href="#englishFlag"><img class="icon" src="image\english-flag.jpg" alt="englishFlag"></a></li>
+    <li class="right"><a href="#shopIcon"><img class="icon" src="image\panier.png" alt="shopIcon"></a></li>
+    <li class="right"><a href="#connexion"><button class="buttonNavBar">Inscription/Connexion</button></a></li>
+   
+    <li class="search-container">
+      <a>
+        <form action="/action_page.php">
+          <input type="text" placeholder="Rechercher.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </a>
+      </li>
+
+  </ul>
+
+  <!--Container-->
+
+  <div class="container-title">
+    <h2>Calendrier</h2>
+
+    
+
+    <div class="flex-container">
+        <div>
+                <iframe src="https://calendar.google.com/calendar/embed?height=350&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FBrussels&amp;src=b3ZnazdkOXVxNzBvNDFxMGVyMzMzOWZwMTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23F4511E&amp;showDate=1&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0" style="border-width:0" width="350" height="350" frameborder="0" scrolling="no"></iframe>       
+            
+        </div>
+        <div class="test-table">
+                <table>
+                        <tr>
+                          <th>Intitulé</th>
+                          <th>Saison</th>
+                          <th>Catégorie</th>
+                          <th>disponibilité</th>
+                          <th>Variétés disponibles</th>
+                        </tr>
+                        <tr>
+                          <td><a href="product-pomme">Pomme</a></td>
+                          <td>Janvier<br>Decembre</td>
+                          <td>Fruits</td>
+                          <td>oui</td>
+                          <td>Golden<br>Ariane<br>Grany</td>
+                        </tr>
+                        <tr>
+                          <td><a href="product-artichaut">Artichaut</a></td>
+                          <td>Avril<br>Septembre</td>
+                          <td>Legume</td>
+                          <td>non</td>
+                          <td>/</td>
+                        </tr>
+                      </table>
+        </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+    <div class="footer">
+      <h3>Qui sommes nous ?</h3>
+      <p>Projet étudiant créé en 2019,la corne d'abondance a pour vocation de faciliter la vente de produits issuent de l'agriculture belge. <br>
+        Cette platforme en ligne est l'idée de la mise en relation de producteurs locaux. <br>
+      </p>
+      
+      <P>© Fricot Damien </P>
+    </div>
+
+</body>
+
+
+</html> 

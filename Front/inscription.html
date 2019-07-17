@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <!-- Header -->
+  <div class="header">
+    <h1>La Corne d'abondance</h1>
+    <p>Vente de fruits et légumes belges</p>
+  </div>
+  
+  <!-- Navigation Bar -->
+  <ul class="navbar">
+    <li><a href="#home">Accueil</a></li>
+    <li class="dropdown">
+      <a href="#category">Categorie</a>
+      <div class="dropdown-content">
+          <a href="#catFruits">Fruits</a>
+          <a href="#catLegumes">Legumes</a>
+        </div></li>
+    <li><a href="#calendar">Calendrier</a></li>
+    <li><a class="active" href="#contact">Contact</a></li>
+    <li class="right"><a href="#frenchFlag"><img class="icon" src="image\french-flag.png" alt="frenchFlag"></a></li>   
+    <li class="right"><a href="#englishFlag"><img class="icon" src="image\english-flag.jpg" alt="englishFlag"></a></li>
+    <li class="right"><a href="#shopIcon"><img class="icon" src="image\panier.png" alt="shopIcon"></a></li>
+    <li class="right"><a href="#connexion"><button class="buttonNavBar">Inscription/Connexion</button></a></li>
+   
+    <li class="search-container">
+      <a>
+        <form action="/action_page.php">
+          <input type="text" placeholder="Rechercher.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </a>
+      </li>
+
+  </ul>
+
+  <!--Container-->
+
+  <div class="container-title">
+    <h2>Inscription</h2>
+
+    
+
+    <div class="flex-container">
+        <div>
+                <form action="">
+                    Nom:
+                    <input type="text" name="lastName" maxlength="25">
+                </form><br>
+                <form action="">
+                    Prénom:
+                    <input type="text" name="firstName" maxlength="25">
+                </form><br>
+                <form action="">
+                    Date de naissance:
+                    <input type="date" name="birthday">
+                </form><br>
+                <form action="">
+                    Adresse Mail:
+                    <input type="text" name="mail" maxlength="40">
+                </form><br>
+                <form action="">
+                    Téléphonne:
+                    <input type="number" name="téléphonne">
+                </form><br>
+                <form action="">
+                    Adresse privée:
+                    <input type="text" name="adressePro" maxlength="100">
+                </form><br>
+                <form action="">
+                    Adresse de livraison:
+                    <input type="text" name="adresseDelivery" maxlength="100">
+                </form><br>
+        </div>
+        <div>
+                <a href="product-pomme">
+                    <div>
+                        <img class="icon" src="image/pomme.png" alt="pommeIcon">
+                        <h3>Logo<br></h3>
+                    </div>
+                </a>
+                <form action="">
+                        Login:
+                        <input type="text" name="login" maxlength="25">
+                </form><br>
+                <form action="">
+                    Password:
+                    <input type="text" name="password" maxlength="100">
+                </form><br>
+                <form action="">
+                        Vérification Password:
+                        <input type="text" name="verifPassword" maxlength="100">
+                    </form><br>
+
+
+        </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+    <div class="footer">
+      <h3>Qui sommes nous ?</h3>
+      <p>Projet étudiant créé en 2019,la corne d'abondance a pour vocation de faciliter la vente de produits issuent de l'agriculture belge. <br>
+        Cette platforme en ligne est l'idée de la mise en relation de producteurs locaux. <br>
+      </p>
+      
+      <P>© Fricot Damien </P>
+    </div>
+
+</body>
+
+
+</html> 

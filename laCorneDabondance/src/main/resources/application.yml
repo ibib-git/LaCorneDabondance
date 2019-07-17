@@ -1,0 +1,7 @@
+server :
+  port : 8085
+  contextPath : /firstSpringProject
+spring :
+  datasource :
+  password : labo
+  url : jdbc:mysql://localhost :3305/childdb?user=prof

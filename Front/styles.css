@@ -9,10 +9,15 @@ body {
   .header {
     padding: 60px;
     text-align: center;
-    background: #1abc9c;
+    background-image: url("image/Corne-dAbondance.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #111;
     color: white;
   }
 
+ /* Navigation Bar */
   ul.navbar {
     list-style-type: none;
     margin: 0;
@@ -83,6 +88,114 @@ body {
   
 }
 
+/* The dropdown container */
+.dropdown {
+  float: center;
+  overflow: hidden;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Container*/
+.container-title {
+  
+  padding: 10px 50px 50px 50px;
+  margin: 20px;
+  
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+  
+}
+
+/* Home */
+
+
+.product-back {
+  
+  height: 400px;
+  width: 500px;
+  display: block;
+  
+  
+}
+.flex-container a{
+  text-decoration: none;
+  color: black;
+}
+
+.flex-container a:hover {
+  background-color: #F7FFF1;
+}
+
+.image-product { 
+  width:80px;
+  height:75px;
+  border:0;
+  
+}
+
+/* Table */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+td, th {
+  border: 1px solid #070000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #F7FFF1;
+}
+
+.test-table{
+  overflow-x: auto;
+  
+}
+
+
+
+
 /* Footer */
 .footer {
   padding: 20px;
@@ -103,10 +216,30 @@ body {
       text-align: center;
     }
 
+    .flex-container,.product-back {
+      flex-direction: column;
+      float : none;
+      text-align: center;
+      width: auto;
+      height: auto;
+    }
+
+    .table,.td,.th{
+      flex-direction: column;
+      float : none;
+      text-align: start;
+      width: auto;
+      height: auto;
+      overflow-x: auto;
+    }
+
     ul.navbar li.input {
       border: 1px solid #ccc; 
     }
-
+    .dropdown-content {
+      display: none;
+      position: absolute;
+    }
     
    
   }
