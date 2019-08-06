@@ -12,6 +12,8 @@ public class WelcomController {
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model){
+
+        model.addAttribute("title","La Corne d'Abondance");
         return "integrated:welcom";
     }
 

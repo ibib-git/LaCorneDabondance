@@ -5,7 +5,7 @@
 <html lang="fr">
 
 <head>
-    <title>La Corne d'abondance</title>
+    <title>${title}</title>
     <link type="text/css" rel="stylesheet" href="<spring:url value='/css/styles.css'/>"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
 
 <body>
 <!-- Header -->
-<div class="header">
+<div class="header" style="background-image: url('<spring:url value="/images/Corne-dAbondance.jpg"/>')";>
     <h1>La Corne d'abondance</h1>
     <p>Vente de fruits et legumes belges</p>
 </div>
