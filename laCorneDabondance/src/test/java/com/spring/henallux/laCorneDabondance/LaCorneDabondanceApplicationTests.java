@@ -1,4 +1,4 @@
-package com.spring.henallux.firstSpringProject;
+package com.spring.henallux.laCorneDabondance;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FirstSpringProjectApplicationTests {
+public class LaCorneDabondanceApplicationTests {
 
 	@Test
 	public void contextLoads() {

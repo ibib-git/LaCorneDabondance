@@ -1,12 +1,13 @@
-package com.spring.henallux.firstSpringProject;
+package com.spring.henallux.laCorneDabondance;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FirstSpringProjectApplication {
+public class LaCorneDabondanceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FirstSpringProjectApplication.class, args);
+		SpringApplication.run(LaCorneDabondanceApplication.class, args);
 	}
+
 }

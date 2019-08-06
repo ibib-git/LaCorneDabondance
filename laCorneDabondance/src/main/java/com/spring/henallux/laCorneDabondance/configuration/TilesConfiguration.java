@@ -1,28 +1,29 @@
-package com.spring.henallux.firstSpringProject.configuration;
+package com.spring.henallux.laCorneDabondance.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 public class TilesConfiguration {
+
     @Bean
-    public TilesConfigurer tilesConfigurer()
-    {
+    public TilesConfigurer tilesConfigurer () {
+
         final TilesConfigurer configurer = new TilesConfigurer();
-        configurer.setDefinitions("/WEB-INF/ressources/tiles.xml");
+        configurer.setDefinitions("WEB-INF/resources/tiles.xml");
         configurer.setCheckRefresh(true);
         return configurer;
     }
 
     @Bean
-    public ViewResolver tilesViewResolver ()
-    {
+    public ViewResolver tilesViewResolver (){
         final TilesViewResolver resolver = new TilesViewResolver();
         resolver.setViewClass(TilesView.class);
         return resolver;
     }
+
 }

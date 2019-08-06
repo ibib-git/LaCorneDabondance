@@ -1,7 +1,9 @@
 server :
-  port : 8085
-  contextPath : /firstSpringProject
+  port : 8082
+  contextPath : /laCorneDabondance
 spring :
   datasource :
-  password : labo
-  url : jdbc:mysql://localhost :3305/childdb?user=prof
+   url : jdbc:mysql://localhost:3305/cornedabondance?useSSL=false
+   driver-class-name: com.mysql.jdbc.Driver
+   username: root
+   password: racine

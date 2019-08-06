@@ -10,7 +10,7 @@
     It has 4 attributes. These attributes are placeholder for our contents
     For each attribute, we have assigned a corresponding JSP
     -->
-    <definition name="template-main" template="/WEB-INF/jsp/template/templateTest.jsp">
+    <definition name="template-main" template="/WEB-INF/jsp/template/template.jsp">
         <put-attribute name="main-content" value="" />
     </definition>
 
