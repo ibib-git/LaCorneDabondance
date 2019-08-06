@@ -73,10 +73,7 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>msql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
+
 
 
 	</dependencies>
