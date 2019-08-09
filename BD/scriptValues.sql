@@ -1,0 +1,5 @@
+insert into user values ("dam","Fricot","Damien",0494129873,"damien.fricot@hotmail.be","Rue du moulin 220 5600 Philippeville","Avenue Fernand Golenvaux 5000 Namur",str_to_date('23-aug-1994','%e-%b-%Y'),'motDePasse',true);
+insert into category values (1,"fruit"),(2,"légume");
+insert into product values (1,"pomme","Golden Deliciou","Rosacée","golden",0.2,"Fruit local par excellence, la pomme est le seul fruit de nos régions que l’on peut consommer toute l’année.
+                        Nous en mangeons en moyenne un peu plus de 16 kg par année.La pomme est énergisante et désaltérante.
+                        Elle fait une collation parfaite car elle contient beaucoup de vitamines, de minéraux, d'oligoéléments, d'acides des fruits et de fructose.",20,str_to_date('08-aug-2019','%e-%b-%Y'),str_to_date('01-aug-2019','%e-%b-%Y'),str_to_date('30-nov-2019','%e-%b-%Y'),"pomme-golden.png",1	);

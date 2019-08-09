@@ -34,7 +34,8 @@ create table language (
     label varchar (45) not null);
 
 create table category (
-	id int primary key not null);
+	id int primary key not null,
+    libelle varchar(45) not null);
 
 create table traduction (
 	label varchar(45) primary key not null,
@@ -50,12 +51,12 @@ create table product (
     family varchar(45) not null,
     variety varchar(45),
     catalogPrice int not null,
-    description varchar(45) not null,
+    description varchar(450) not null,
     lifespan int not null,
 	dateArrival date not null,
     seasonStart date not null,
     seasonEnd date not null,
-    photoLink varchar(45) not null,
+    photoLink varchar(200) not null,
     category int not null,
     constraint categoryProduct_FK foreign key (category) references category (id));
 
