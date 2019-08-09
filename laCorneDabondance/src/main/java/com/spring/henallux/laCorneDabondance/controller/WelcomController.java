@@ -17,6 +17,20 @@ public class WelcomController {
         return "integrated:welcom";
     }
 
+    @RequestMapping(value ="/contact",method = RequestMethod.GET)
+    public String contact (Model model) {
+
+        model.addAttribute("title","Contact");
+        return "integrated:contact";
+    }
+
+    @RequestMapping(value = "/calendar",method = RequestMethod.GET)
+    public String calendar (Model model){
+
+        model.addAttribute("title","Calendrier");
+        return "integrated:calendar";
+    }
+
 
 
 
