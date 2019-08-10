@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping (value = "/products")
 public class ProductsController {
 
-    @RequestMapping(method = RequestMethod.GET)
+
+    @RequestMapping(value = "/fruits",params = {"product"},method = RequestMethod.GET)
     public String products (Model model) {
+
 
         model.addAttribute("title","Produits");
         return "integrated:products";
