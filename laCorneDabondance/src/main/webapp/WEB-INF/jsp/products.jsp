@@ -15,7 +15,7 @@
         <a href="product-pomme">
             <div>
                 <img class="image-product" src='<spring:url value="/images/pomme.png"/>' alt="pommeIcon">
-                <h3>Pomme</h3>
+                <h3>${apple}</h3>
             </div>
         </a>
         <a href="product-poirre">

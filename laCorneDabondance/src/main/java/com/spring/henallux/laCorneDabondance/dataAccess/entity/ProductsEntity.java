@@ -5,33 +5,45 @@ import javax.persistence.*;
 import java.util.GregorianCalendar;
 
 @Entity
-@Table (name = "products")
+@Table (name = "product")
 public class ProductsEntity {
 
     @Id
     @GeneratedValue
+    @Column (name = "id")
     private Integer id;
 
+    @Column (name = "name")
     private String name;
 
+    @Column (name = "scientName")
     private String scientName;
 
+    @Column (name = "family")
     private String family;
 
+    @Column (name = "variety")
     private String variety;
 
+    @Column (name = "catalogPrice")
     private Integer catalogPrice;
 
+    @Column (name = "description")
     private String description;
 
+    @Column (name = "lifespan")
     private Integer lifespan;
 
+    @Column (name = "dateArrival")
     private GregorianCalendar dateArrival;
 
+    @Column (name = "seasonStart")
     private GregorianCalendar seasonStart;
 
+    @Column (name = "seasonEnd")
     private  GregorianCalendar seasonEnd;
 
+    @Column (name = "photoLink")
     private String photoLink;
 
     @Column (name = "category")
