@@ -14,7 +14,7 @@ public class ProductsModel {
 
     private String variety;
 
-    private Integer catalogPrice;
+    private Float catalogPrice;
 
     private String description;
 
@@ -24,7 +24,7 @@ public class ProductsModel {
 
     private GregorianCalendar seasonStart;
 
-    private  GregorianCalendar seasonEnd;
+    private GregorianCalendar seasonEnd;
 
     private String photoLink;
 
@@ -32,8 +32,7 @@ public class ProductsModel {
 
     public ProductsModel (){}
 
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -73,14 +72,6 @@ public class ProductsModel {
         this.variety = variety;
     }
 
-    public Integer getCatalogPrice() {
-        return catalogPrice;
-    }
-
-    public void setCatalogPrice(Integer catalogPrice) {
-        this.catalogPrice = catalogPrice;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -89,12 +80,36 @@ public class ProductsModel {
         this.description = description;
     }
 
-    public Integer getLifespan() {
+    public int getLifespan() {
         return lifespan;
     }
 
     public void setLifespan(Integer lifespan) {
         this.lifespan = lifespan;
+    }
+
+    public String getPhotoLink() {
+        return photoLink;
+    }
+
+    public void setPhotoLink(String photoLink) {
+        this.photoLink = photoLink;
+    }
+
+    public int getCategoryProduct() {
+        return categoryProduct;
+    }
+
+    public void setCategoryProduct(Integer categoryProduct) {
+        this.categoryProduct = categoryProduct;
+    }
+
+    public Float getCatalogPrice() {
+        return catalogPrice;
+    }
+
+    public void setCatalogPrice(Float catalogPrice) {
+        this.catalogPrice = catalogPrice;
     }
 
     public GregorianCalendar getDateArrival() {
@@ -119,21 +134,5 @@ public class ProductsModel {
 
     public void setSeasonEnd(GregorianCalendar seasonEnd) {
         this.seasonEnd = seasonEnd;
-    }
-
-    public String getPhotoLink() {
-        return photoLink;
-    }
-
-    public void setPhotoLink(String photoLink) {
-        this.photoLink = photoLink;
-    }
-
-    public Integer getCategoryProduct() {
-        return categoryProduct;
-    }
-
-    public void setCategoryProduct(Integer categoryProduct) {
-        this.categoryProduct = categoryProduct;
     }
 }

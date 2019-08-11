@@ -2,6 +2,7 @@ package com.spring.henallux.laCorneDabondance.dataAccess.entity;
 
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 @Entity
@@ -16,7 +17,7 @@ public class ProductsEntity {
     @Column (name = "name")
     private String name;
 
-    @Column (name = "scientName")
+    @Column (name = "scientname")
     private String scientName;
 
     @Column (name = "family")
@@ -25,8 +26,8 @@ public class ProductsEntity {
     @Column (name = "variety")
     private String variety;
 
-    @Column (name = "catalogPrice")
-    private Integer catalogPrice;
+    @Column (name = "catalogprice")
+    private Float catalogPrice;
 
     @Column (name = "description")
     private String description;
@@ -34,16 +35,19 @@ public class ProductsEntity {
     @Column (name = "lifespan")
     private Integer lifespan;
 
-    @Column (name = "dateArrival")
-    private GregorianCalendar dateArrival;
+    @Column (name = "datearrival")
+    @Temporal(TemporalType.DATE)
+    private Date dateArrival;
 
-    @Column (name = "seasonStart")
-    private GregorianCalendar seasonStart;
+    @Column (name = "seasonstart")
+    @Temporal(TemporalType.DATE)
+    private Date seasonStart;
 
-    @Column (name = "seasonEnd")
-    private  GregorianCalendar seasonEnd;
+    @Column (name = "seasonend")
+    @Temporal(TemporalType.DATE)
+    private  Date seasonEnd;
 
-    @Column (name = "photoLink")
+    @Column (name = "photolink")
     private String photoLink;
 
     @Column (name = "category")
@@ -51,7 +55,8 @@ public class ProductsEntity {
 
     public ProductsEntity (){}
 
-    public Integer getId() {
+
+    public int getId() {
         return id;
     }
 
@@ -91,14 +96,6 @@ public class ProductsEntity {
         this.variety = variety;
     }
 
-    public Integer getCatalogPrice() {
-        return catalogPrice;
-    }
-
-    public void setCatalogPrice(Integer catalogPrice) {
-        this.catalogPrice = catalogPrice;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -107,36 +104,12 @@ public class ProductsEntity {
         this.description = description;
     }
 
-    public Integer getLifespan() {
+    public int getLifespan() {
         return lifespan;
     }
 
     public void setLifespan(Integer lifespan) {
         this.lifespan = lifespan;
-    }
-
-    public GregorianCalendar getDateArrival() {
-        return dateArrival;
-    }
-
-    public void setDateArrival(GregorianCalendar dateArrival) {
-        this.dateArrival = dateArrival;
-    }
-
-    public GregorianCalendar getSeasonStart() {
-        return seasonStart;
-    }
-
-    public void setSeasonStart(GregorianCalendar seasonStart) {
-        this.seasonStart = seasonStart;
-    }
-
-    public GregorianCalendar getSeasonEnd() {
-        return seasonEnd;
-    }
-
-    public void setSeasonEnd(GregorianCalendar seasonEnd) {
-        this.seasonEnd = seasonEnd;
     }
 
     public String getPhotoLink() {
@@ -147,11 +120,44 @@ public class ProductsEntity {
         this.photoLink = photoLink;
     }
 
-    public Integer getCategoryProduct() {
+    public int getCategoryProduct() {
         return categoryProduct;
     }
 
     public void setCategoryProduct(Integer categoryProduct) {
         this.categoryProduct = categoryProduct;
+    }
+
+    public Float getCatalogPrice() {
+        return catalogPrice;
+    }
+
+    public void setCatalogPrice(Float catalogPrice) {
+        this.catalogPrice = catalogPrice;
+    }
+
+
+    public void setDateArrival(Date dateArrival) {
+        this.dateArrival = dateArrival;
+    }
+
+    public void setSeasonStart(Date seasonStart) {
+        this.seasonStart = seasonStart;
+    }
+
+    public void setSeasonEnd(Date seasonEnd) {
+        this.seasonEnd = seasonEnd;
+    }
+
+    public Date getDateArrival() {
+        return dateArrival;
+    }
+
+    public Date getSeasonStart() {
+        return seasonStart;
+    }
+
+    public Date getSeasonEnd() {
+        return seasonEnd;
     }
 }

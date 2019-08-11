@@ -14,7 +14,7 @@
     <div class="flex-container">
         <a href="product-pomme">
             <div>
-                <img class="image-product" src='<spring:url value="/images/pomme.png"/>' alt="pommeIcon">
+                <img class="image-product" src='<spring:url value="/images/${appleLink}"/>' alt="pommeIcon">
                 <h3>${apple}</h3>
             </div>
         </a>

@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
-
+/*
 @Entity
 @Table (name = "user")
 public class UserEntity {
@@ -115,3 +115,4 @@ public class UserEntity {
         this.enabled = enabled;
     }
 }
+*/

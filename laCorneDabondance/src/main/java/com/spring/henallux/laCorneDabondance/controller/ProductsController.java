@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 @Controller
 @RequestMapping (value = "/products")
 public class ProductsController {
@@ -17,9 +20,10 @@ public class ProductsController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String products (Model model) {
-        Integer id = 1;
-        String chat = "pilou";
-        model.addAttribute("apple",productsService.getProduct(id).getName());
+        int id = 1;
+        model.addAttribute("apple",productsService.getProduct(id).getDateArrival());
+        model.addAttribute("appleLink",productsService.getProduct(id).getPhotoLink());
+
         model.addAttribute("title","Produits");
         return "integrated:products";
     }
