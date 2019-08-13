@@ -5,6 +5,7 @@ import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,6 +19,7 @@ public class ProductsController {
 
     @Autowired
     private ProductsService productsService;
+    private ProductsModel productDetail;
 
     @RequestMapping(value = "/fruits",method = RequestMethod.GET)
     public String fruits (Model model) {
@@ -38,7 +40,8 @@ public class ProductsController {
     }
 
     @RequestMapping(value = "/legumes",method = RequestMethod.GET)
-    public String legumes (Model model) {
+    public String legumes (Model model)
+    {
         ArrayList<ProductsModel> legumesListing = new ArrayList<>();
 
         for (ProductsModel legume: productsService.getAllProducts())
@@ -52,5 +55,30 @@ public class ProductsController {
         model.addAttribute("productsListing",legumesListing);
         model.addAttribute("title","Légumes");
         return "integrated:products";
+    }
+
+
+
+    @RequestMapping (value = "/detail/{productId}",method = RequestMethod.GET)
+    public String detailProduct (Model model, @PathVariable int productId)
+    {
+        productDetail =productsService.getProduct(productId);
+
+        model.addAttribute("detailName",productDetail.getName());
+        model.addAttribute("detailScient",productDetail.getScientName());
+        model.addAttribute("detailDesc",productDetail.getDescription());
+        model.addAttribute("detailImage",productDetail.getPhotoLink());
+        model.addAttribute("detailVariety",productDetail.getVariety());
+        model.addAttribute("detailFamily",productDetail.getFamily());
+        model.addAttribute("detailPrice",productDetail.getCatalogPrice());
+        model.addAttribute("detailLife",productDetail.getLifespan());
+        model.addAttribute("detailCat",productDetail.getCategoryProduct());
+        model.addAttribute("detailSeasonStart",productDetail.getSeasonStart());
+        model.addAttribute("detailSeasonEnd",productDetail.getSeasonEnd());
+        model.addAttribute("detailArriv",productDetail.getDateArrival());
+        model.addAttribute("detailQuant",productDetail.getQuantity());
+
+        model.addAttribute("title",productDetail.getName());
+        return "integrated:productDetail";
     }
 }

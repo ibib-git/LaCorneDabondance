@@ -15,21 +15,19 @@
 
         <c:forEach items="${productsListing}" var="product">
 
-            <a href="product-fraise">
+            <a href="<spring:url value='/products/detail/${product.getId()}'  />" >
                 <div>
                     <img class="image-product" src='<spring:url value="/images/${product.getPhotoLink()}"/>' alt="productIcon">
                     <h3>${product.getName()}</h3>
                 </div>
             </a>
 
-
         </c:forEach>
-        <div>
 
-
-        </div>
 
     </div>
+
+
 
 </div>
 

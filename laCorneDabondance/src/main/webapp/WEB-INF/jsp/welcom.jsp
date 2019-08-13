@@ -14,13 +14,13 @@
             <div class="product-back">
                 <h3>${welcomFruitsName}</h3>
                 <img class="image-product" src='<spring:url value="/images/${welcomFruitsImage}"/>' alt="welcomFruit">
-                <p> ${welcomFruitsDescription} </div>
+                <p> ${welcomFruitsDescription} </p> </div>
         </a>
         <a href="product-fenouil">
             <div class="product-back">
                 <h3>${welcomLegumeName}</h3>
                 <img class="image-product" src='<spring:url value="/images/${welcomLegumeImage}"/>' alt="welcomLegume">
-                <p> ${welcomLegumeDescription} </div>
+                <p> ${welcomLegumeDescription} </p> </div>
         </a>
     </div>
 
