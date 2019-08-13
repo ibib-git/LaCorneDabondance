@@ -26,7 +26,7 @@
         <a href="#category">Categorie</a>
         <div class="dropdown-content">
             <a href="<spring:url value='/products/fruits'/>">Fruits</a>
-            <a href="#catLegumes">Legumes</a>
+            <a href="<spring:url value='/products/legumes'/>">Legumes</a>
         </div></li>
     <li><a href="<spring:url value='/home/calendar'/>">Calendrier</a></li>
     <li><a href="<spring:url value='/home/contact'/>">Contact</a></li>

@@ -18,12 +18,9 @@
         </a>
         <a href="product-fenouil">
             <div class="product-back">
-                <h3>Le fenouil</h3>
-                <img class="image-product" src='<spring:url value="/images/fenouil.gif"/>' alt="fenouil">
-                <p>Le terme « fenouil » s'applique à plusieurs taxons distincts de la famille des apiacées. En tout, près de 90 variétés de fenouil sont inscrites au catalogue européen des espèces.
-                    C'est le fenouil commun que l'on utilise en cuisine. Son goût ressemble à celui de l'anis. On peut cuisiner toutes les parties de la plante : racines, feuilles et graines.
-                    On peut le consommer cru, en salade, ou cuit. Le fenouil peut atteindre 2 mètres de haut. Ses fleurs jaunes réunies en ombelles apparaissent généralement en Août ou en Septembre.</p>
-            </div>
+                <h3>${welcomLegumeName}</h3>
+                <img class="image-product" src='<spring:url value="/images/${welcomLegumeImage}"/>' alt="welcomLegume">
+                <p> ${welcomLegumeDescription} </div>
         </a>
     </div>
 
