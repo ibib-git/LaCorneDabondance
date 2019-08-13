@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -18,13 +19,38 @@ public class ProductsController {
     @Autowired
     private ProductsService productsService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String products (Model model) {
+    @RequestMapping(value = "/fruits",method = RequestMethod.GET)
+    public String fruits (Model model) {
         int id = 1;
-        model.addAttribute("apple",productsService.getProduct(id).getDateArrival());
-        model.addAttribute("appleLink",productsService.getProduct(id).getPhotoLink());
+        ArrayList<ProductsModel> fruitsListing = new ArrayList<>();
 
-        model.addAttribute("title","Produits");
+        for (ProductsModel fruit: productsService.getAllProducts())
+        {
+            if (fruit.getCategoryProduct() == 1)
+            {
+                fruitsListing.add(fruit);
+            }
+        }
+
+        model.addAttribute("productsListing",fruitsListing);
+        model.addAttribute("title","Fruits");
+        return "integrated:products";
+    }
+
+    @RequestMapping(value = "/legumes",method = RequestMethod.GET)
+    public String legumes (Model model) {
+        ArrayList<ProductsModel> legumesListing = new ArrayList<>();
+
+        for (ProductsModel legume: productsService.getAllProducts())
+        {
+            if (legume.getCategoryProduct() == 2)
+            {
+                legumesListing.add(legume);
+            }
+        }
+
+        model.addAttribute("productsListing",legumesListing);
+        model.addAttribute("title","Légumes");
         return "integrated:products";
     }
 }

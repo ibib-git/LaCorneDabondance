@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.Time;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Service
@@ -47,5 +51,30 @@ public class ProductsDAO {
         ProductsModel productsModel = productsConverter.productsEntityToProductsModel(entity);
         return productsModel;
 
+    }
+
+    public ArrayList<ProductsModel> getSeasonProducts () {
+
+        List <ProductsEntity> productsEntities = productsRepository.findAll();
+        ArrayList<ProductsModel> productsModels = new ArrayList<>();
+        GregorianCalendar toDay = new GregorianCalendar();
+        toDay.setTimeInMillis(System.currentTimeMillis());
+        toDay.set(Calendar.MONTH,toDay.get(Calendar.MONTH)+1);
+
+        for (ProductsEntity entity : productsEntities)
+        {
+            ProductsModel productsModel = productsConverter.productsEntityToProductsModel(entity);
+
+            if (productsModel.getSeasonStart().compareTo(toDay) <= 0)  // negatif si start avant
+            {
+
+                if (productsModel.getSeasonEnd().compareTo(toDay) >= 0) // positif si end après
+                {
+                    productsModels.add(productsModel);
+                }
+
+            }
+        }
+        return productsModels;
     }
 }

@@ -12,12 +12,9 @@
     <div class="flex-container">
         <a href="product-pomme">
             <div class="product-back">
-                <h3>La pomme</h3>
-                <img class="image-product" src='<spring:url value="/images/pomme.png"/>' alt="pomme">
-                <p>Fruit local par excellence, la pomme est le seul fruit de nos régions que l’on peut consommer toute l’année.
-                    Nous en mangeons en moyenne un peu plus de 16 kg par année.La pomme est énergisante et désaltérante.
-                    Elle fait une collation parfaite car elle contient beaucoup de vitamines, de minéraux, d'oligoéléments, d'acides des fruits et de fructose.</p>
-            </div>
+                <h3>${welcomFruitsName}</h3>
+                <img class="image-product" src='<spring:url value="/images/${welcomFruitsImage}"/>' alt="welcomFruit">
+                <p> ${welcomFruitsDescription} </div>
         </a>
         <a href="product-fenouil">
             <div class="product-back">

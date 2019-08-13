@@ -10,4 +10,5 @@ public interface ProductsRepository extends JpaRepository<ProductsEntity, Intege
 
     public ProductsEntity  findById(Integer id);
     ArrayList<ProductsEntity> findAll();
+
 }

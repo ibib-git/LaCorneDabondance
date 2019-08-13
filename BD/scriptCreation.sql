@@ -19,7 +19,8 @@ create table user (
     adressDelivery varchar(45) not null,
     birthday date not null,
     password varchar(45) not null,
-    enabled boolean not null);
+    enabled boolean not null)
+    engine = InnoDB;
 
 create table promotion (
 	id int primary key not null,
@@ -27,22 +28,26 @@ create table promotion (
     quantityMin int,
     description varchar(45) not null,
     startDate date not null,
-    endDate date not null);
+    endDate date not null)
+    engine = InnoDB;
 
 create table language (
 	id int primary key not null,
-    label varchar (45) not null);
+    label varchar (45) not null)
+    engine = InnoDB;
 
 create table category (
 	id int primary key not null,
-    libelle varchar(45) not null);
+    libelle varchar(45) not null)
+    engine = InnoDB;
 
 create table traduction (
 	label varchar(45) primary key not null,
     language int not null,
     category int not null,
     constraint language_FK foreign key (language) references language (id),
-    constraint categoryTrad_FK foreign key (category) references category (id));
+    constraint categoryTrad_FK foreign key (category) references category (id))
+    engine = InnoDB;
 
 create table product (
 	id int primary key not null,
@@ -50,28 +55,32 @@ create table product (
     scientName varchar(45) not null,
     family varchar(45) not null,
     variety varchar(45),
-    catalogPrice int not null,
-    description varchar(450) not null,
+    catalogPrice float not null,
+    description varchar(1000) not null,
     lifespan int not null,
 	dateArrival date not null,
     seasonStart date not null,
     seasonEnd date not null,
     photoLink varchar(200) not null,
+    quantity int,
     category int not null,
-    constraint categoryProduct_FK foreign key (category) references category (id));
+    constraint categoryProduct_FK foreign key (category) references category (id))
+    engine = InnoDB;
 
 create table action (
 	label varchar(45) primary key not null,
     promotion int not null,
     product int not null,
     constraint promotion_FK foreign key (promotion) references promotion (id),
-    constraint productAction_FK foreign key (product) references product (id));
+    constraint productAction_FK foreign key (product) references product (id))
+    engine = InnoDB;
 
 create table command (
 	id int primary key not null,
     dateCommand date not null,
     user varchar(45) not null,
-    constraint user_FK foreign key (user) references user (login));
+    constraint user_FK foreign key (user) references user (login))
+    engine = InnoDB;
 
 create table orderLine (
 	id int primary key not null,
@@ -81,7 +90,8 @@ create table orderLine (
     product int not null,
     command int not null,
     constraint productOrder_FK foreign key (product) references product (id),
-    constraint command_FK foreign key (command) references command (id));
+    constraint command_FK foreign key (command) references command (id))
+    engine = InnoDB;
 
 
     

@@ -50,6 +50,9 @@ public class ProductsEntity {
     @Column (name = "photolink")
     private String photoLink;
 
+    @Column (name = "quantity")
+    private Integer quantity;
+
     @Column (name = "category")
     private Integer categoryProduct;
 
@@ -159,5 +162,13 @@ public class ProductsEntity {
 
     public Date getSeasonEnd() {
         return seasonEnd;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

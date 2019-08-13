@@ -4,6 +4,7 @@ import com.spring.henallux.laCorneDabondance.dataAccess.entity.ProductsEntity;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import org.springframework.stereotype.Component;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -35,13 +36,16 @@ public class ProductsConverter {
 
         productsEntity.setDescription(productsModel.getDescription());
         productsEntity.setPhotoLink(productsModel.getPhotoLink());
+        productsEntity.setQuantity(productsModel.getQuantity());
         productsEntity.setCategoryProduct(productsModel.getCategoryProduct());
         return productsEntity;
     }
 
     public ProductsModel productsEntityToProductsModel (ProductsEntity productsEntity){
         ProductsModel productsModel = new ProductsModel();
-        GregorianCalendar dateGreg = new GregorianCalendar();
+        GregorianCalendar dateGregArr  = new GregorianCalendar();
+        GregorianCalendar dateGregStart = new GregorianCalendar();
+        GregorianCalendar dateGregEnd = new GregorianCalendar();
 
         productsModel.setId(productsEntity.getId());
         productsModel.setName(productsEntity.getName());
@@ -52,17 +56,21 @@ public class ProductsConverter {
         productsModel.setLifespan(productsEntity.getLifespan());
 
         //Conversion Date to Gregorian Calendar
-        dateGreg.setTime(productsEntity.getDateArrival());
-        productsModel.setDateArrival(dateGreg);
+        dateGregArr.setTime(productsEntity.getDateArrival());
+        dateGregArr.set(Calendar.MONTH,dateGregArr.get(Calendar.MONTH)+1);
+        productsModel.setDateArrival(dateGregArr);
 
-        dateGreg.setTime(productsEntity.getSeasonStart());
-        productsModel.setSeasonStart(dateGreg);
+        dateGregStart.setTime(productsEntity.getSeasonStart());
+        dateGregStart.set(Calendar.MONTH,dateGregStart.get(Calendar.MONTH)+1);
+        productsModel.setSeasonStart(dateGregStart);
 
-        dateGreg.setTime(productsEntity.getSeasonEnd());
-        productsModel.setSeasonEnd(dateGreg);
+        dateGregEnd.setTime(productsEntity.getSeasonEnd());
+        dateGregEnd.set(Calendar.MONTH,dateGregEnd.get(Calendar.MONTH)+1);
+        productsModel.setSeasonEnd(dateGregEnd);
 
         productsModel.setDescription(productsEntity.getDescription());
         productsModel.setPhotoLink(productsEntity.getPhotoLink());
+        productsModel.setQuantity(productsEntity.getQuantity());
         productsModel.setCategoryProduct(productsEntity.getCategoryProduct());
         return productsModel;
     }

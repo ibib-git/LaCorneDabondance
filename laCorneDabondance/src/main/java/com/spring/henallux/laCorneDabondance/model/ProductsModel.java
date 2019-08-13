@@ -28,6 +28,8 @@ public class ProductsModel {
 
     private String photoLink;
 
+    private Integer quantity;
+
     private Integer categoryProduct;
 
     public ProductsModel (){}
@@ -134,5 +136,13 @@ public class ProductsModel {
 
     public void setSeasonEnd(GregorianCalendar seasonEnd) {
         this.seasonEnd = seasonEnd;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

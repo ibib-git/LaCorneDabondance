@@ -25,7 +25,7 @@
     <li class="dropdown">
         <a href="#category">Categorie</a>
         <div class="dropdown-content">
-            <a href="<spring:url value='/products'/>">Fruits</a>
+            <a href="<spring:url value='/products/fruits'/>">Fruits</a>
             <a href="#catLegumes">Legumes</a>
         </div></li>
     <li><a href="<spring:url value='/home/calendar'/>">Calendrier</a></li>
