@@ -48,6 +48,8 @@ public class WelcomController {
             }
         }
 
+
+
         model.addAttribute("welcomFruitsName",welcomFruit.getName());
         model.addAttribute("welcomFruitsImage",welcomFruit.getPhotoLink());
         model.addAttribute("welcomFruitsDescription",welcomFruit.getDescription());
@@ -57,6 +59,12 @@ public class WelcomController {
         model.addAttribute("welcomLegumeDescription",welcomLegume.getDescription());
         model.addAttribute("welcomLegumeId",welcomLegume.getId());
         model.addAttribute("title","La Corne d'Abondance");
+
+        ArrayList<ProductsModel> productsList = new ArrayList<>();
+        productsList = productsService.getAllProducts();
+
+        model.addAttribute("productsList",productsList);
+
         return "integrated:welcom";
 
     }
@@ -67,17 +75,6 @@ public class WelcomController {
         model.addAttribute("title","Contact");
         return "integrated:contact";
     }
-
-    @RequestMapping(value = "/calendar",method = RequestMethod.GET)
-    public String calendar (Model model){
-
-        model.addAttribute("title","Calendrier");
-        return "integrated:calendar";
-    }
-
-
-
-
 
 
 }

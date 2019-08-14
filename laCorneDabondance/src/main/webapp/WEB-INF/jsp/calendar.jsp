@@ -24,21 +24,29 @@
                     <th>Catégorie</th>
                     <th>disponibilité</th>
                     <th>Variétés disponibles</th>
+
                 </tr>
-                <tr>
-                    <td><a href="product-pomme">Pomme</a></td>
-                    <td>Janvier<br>Decembre</td>
-                    <td>Fruits</td>
-                    <td>oui</td>
-                    <td>Golden<br>Ariane<br>Grany</td>
-                </tr>
-                <tr>
-                    <td><a href="product-artichaut">Artichaut</a></td>
-                    <td>Avril<br>Septembre</td>
-                    <td>Legume</td>
-                    <td>non</td>
-                    <td>/</td>
-                </tr>
+
+
+                    <c:forEach items="${productsList}" var="product">
+                        <a style="cursor: pointer" href="<spring:url value='/products/detail/${product.getId()}'  />">
+                            <tr>
+                                <td>${product.getName()}</td>
+                                <td>${product.getSeasonStart().get(Calendar.MONTH)}<br>${product.getSeasonEnd().get(Calendar.MONTH)}</td>
+                                <td>Fruits/légume à changer</td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${product.getQuantity() > 0}">oui</c:when>
+                                    <c:otherwise>non</c:otherwise>
+                                </c:choose>
+                                </td>
+                                <td>${product.getVariety()}</td>
+                            </tr>
+                        </a>
+
+                    </c:forEach>
+
+
             </table>
         </div>
     </div>

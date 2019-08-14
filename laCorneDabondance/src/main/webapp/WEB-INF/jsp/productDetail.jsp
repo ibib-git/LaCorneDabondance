@@ -20,11 +20,12 @@
             <h4> Variété : ${detailVariety}</h4>
             <p>${detailDesc}</p>
             <h4>Saison du ${detailSeasonStart} au ${detailSeasonEnd}</h4>
+            <h4>Temps de conservation : ${detailLife} jours</h4>
             <h4>${detailPrice} €/Unité</h4>
             <c:choose>
                 <c:when test="${detailQuant > 0}">
 
-            <form action="/action_page.php" >
+            <form action="/action_page.php">
                 Quantité : <input type="number" name="quantity" min="1" max="${detailQuant}" id='inputCommand' />
                 <input type="submit" value="Ajouter au panier" id='buttonCommand'>
 

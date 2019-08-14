@@ -74,11 +74,23 @@ public class ProductsController {
         model.addAttribute("detailLife",productDetail.getLifespan());
         model.addAttribute("detailCat",productDetail.getCategoryProduct());
         model.addAttribute("detailSeasonStart",productDetail.getSeasonStart().get(Calendar.DAY_OF_MONTH)+"/"+productDetail.getSeasonStart().get(Calendar.MONTH)+"/"+productDetail.getSeasonStart().get(Calendar.YEAR));
-        model.addAttribute("detailSeasonEnd",productDetail.getSeasonEnd().get(Calendar.DAY_OF_MONTH)+"/"+productDetail.getSeasonStart().get(Calendar.MONTH)+"/"+productDetail.getSeasonStart().get(Calendar.YEAR));
+        model.addAttribute("detailSeasonEnd",productDetail.getSeasonEnd().get(Calendar.DAY_OF_MONTH)+"/"+productDetail.getSeasonEnd().get(Calendar.MONTH)+"/"+productDetail.getSeasonEnd().get(Calendar.YEAR));
         model.addAttribute("detailArriv",productDetail.getDateArrival());
         model.addAttribute("detailQuant",productDetail.getQuantity());
 
         model.addAttribute("title",productDetail.getName());
         return "integrated:productDetail";
+    }
+
+
+    @RequestMapping(value = "/calendar",method = RequestMethod.GET)
+    public String calendar (Model model){
+
+        ArrayList<ProductsModel> productsList = new ArrayList<>();
+        productsList = productsService.getAllProducts();
+
+        model.addAttribute("productsList",productsList);
+         model.addAttribute("title","Calendrier");
+        return "integrated:calendar";
     }
 }
