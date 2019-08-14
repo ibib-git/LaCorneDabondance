@@ -10,13 +10,13 @@
     <p><h2>Produits du moment</h2></p>
 
     <div class="flex-container">
-        <a href="product-pomme">
+        <a href="<spring:url value='/products/detail/${welcomFruitsId}'  />">
             <div class="product-back">
                 <h3>${welcomFruitsName}</h3>
                 <img class="image-product" src='<spring:url value="/images/${welcomFruitsImage}"/>' alt="welcomFruit">
                 <p> ${welcomFruitsDescription} </p> </div>
         </a>
-        <a href="product-fenouil">
+        <a href="<spring:url value='/products/detail/${welcomLegumeId}'  />">
             <div class="product-back">
                 <h3>${welcomLegumeName}</h3>
                 <img class="image-product" src='<spring:url value="/images/${welcomLegumeImage}"/>' alt="welcomLegume">

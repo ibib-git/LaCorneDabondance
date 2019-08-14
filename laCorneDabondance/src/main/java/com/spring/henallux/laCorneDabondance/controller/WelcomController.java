@@ -51,9 +51,11 @@ public class WelcomController {
         model.addAttribute("welcomFruitsName",welcomFruit.getName());
         model.addAttribute("welcomFruitsImage",welcomFruit.getPhotoLink());
         model.addAttribute("welcomFruitsDescription",welcomFruit.getDescription());
+        model.addAttribute("welcomFruitsId",welcomFruit.getId());
         model.addAttribute("welcomLegumeName",welcomLegume.getName());
         model.addAttribute("welcomLegumeImage",welcomLegume.getPhotoLink());
         model.addAttribute("welcomLegumeDescription",welcomLegume.getDescription());
+        model.addAttribute("welcomLegumeId",welcomLegume.getId());
         model.addAttribute("title","La Corne d'Abondance");
         return "integrated:welcom";
 

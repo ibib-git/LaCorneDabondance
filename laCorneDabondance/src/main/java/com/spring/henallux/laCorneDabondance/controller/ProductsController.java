@@ -73,8 +73,8 @@ public class ProductsController {
         model.addAttribute("detailPrice",productDetail.getCatalogPrice());
         model.addAttribute("detailLife",productDetail.getLifespan());
         model.addAttribute("detailCat",productDetail.getCategoryProduct());
-        model.addAttribute("detailSeasonStart",productDetail.getSeasonStart());
-        model.addAttribute("detailSeasonEnd",productDetail.getSeasonEnd());
+        model.addAttribute("detailSeasonStart",productDetail.getSeasonStart().get(Calendar.DAY_OF_MONTH)+"/"+productDetail.getSeasonStart().get(Calendar.MONTH)+"/"+productDetail.getSeasonStart().get(Calendar.YEAR));
+        model.addAttribute("detailSeasonEnd",productDetail.getSeasonEnd().get(Calendar.DAY_OF_MONTH)+"/"+productDetail.getSeasonStart().get(Calendar.MONTH)+"/"+productDetail.getSeasonStart().get(Calendar.YEAR));
         model.addAttribute("detailArriv",productDetail.getDateArrival());
         model.addAttribute("detailQuant",productDetail.getQuantity());
 
