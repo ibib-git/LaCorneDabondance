@@ -1,6 +1,7 @@
 package com.spring.henallux.laCorneDabondance.dataAccess.util;
 
 import com.spring.henallux.laCorneDabondance.dataAccess.entity.ProductsEntity;
+import com.spring.henallux.laCorneDabondance.model.MarketModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import org.springframework.stereotype.Component;
 
@@ -74,5 +75,7 @@ public class ProductsConverter {
         productsModel.setCategoryProduct(productsEntity.getCategoryProduct());
         return productsModel;
     }
+
+
 
 }

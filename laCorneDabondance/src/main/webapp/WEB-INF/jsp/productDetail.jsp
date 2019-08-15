@@ -25,7 +25,7 @@
             <c:choose>
                 <c:when test="${detailQuant > 0}">
 
-            <form action="/action_page.php">
+            <form action="/laCorneDabondance/products/addProduct" id="addProduct" method="post" modelAttribute="session">
                 Quantité : <input type="number" name="quantity" min="1" max="${detailQuant}" id='inputCommand' />
                 <input type="submit" value="Ajouter au panier" id='buttonCommand'>
 

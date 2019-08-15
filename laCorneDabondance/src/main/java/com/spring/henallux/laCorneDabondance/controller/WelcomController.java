@@ -1,21 +1,24 @@
 package com.spring.henallux.laCorneDabondance.controller;
 
+import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
+import com.spring.henallux.laCorneDabondance.model.SessionModel;
 import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
+import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Random;
+
 
 @Controller
 @RequestMapping(value ="/home")
-public class WelcomController {
+@SessionAttributes ({ConstantConfiguration.SESSION,ConstantConfiguration.CURRENT_USER})
+public class WelcomController extends SessionController {
 
     @Autowired
     private ProductsService productsService;
@@ -23,7 +26,8 @@ public class WelcomController {
     private ProductsModel welcomFruit,welcomLegume;
 
     @RequestMapping (method = RequestMethod.GET)
-    public String home (Model model){
+    public String home (Model model, @ModelAttribute (value = "session")SessionModel sessionModel){
+
 
         Random random = new Random();
         productsListing = productsService.getSeasonProducts();
@@ -69,12 +73,16 @@ public class WelcomController {
 
     }
 
+
+
     @RequestMapping(value ="/contact",method = RequestMethod.GET)
-    public String contact (Model model) {
+    public String contact (Model model, @ModelAttribute (value = "session")SessionModel sessionModel) {
 
         model.addAttribute("title","Contact");
         return "integrated:contact";
     }
+
+
 
 
 }

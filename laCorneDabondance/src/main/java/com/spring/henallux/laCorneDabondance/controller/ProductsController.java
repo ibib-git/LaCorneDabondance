@@ -1,13 +1,13 @@
 package com.spring.henallux.laCorneDabondance.controller;
 
+import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
+import com.spring.henallux.laCorneDabondance.model.SessionModel;
 import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,6 +15,7 @@ import java.util.GregorianCalendar;
 
 @Controller
 @RequestMapping (value = "/products")
+@SessionAttributes({ConstantConfiguration.SESSION,ConstantConfiguration.CURRENT_USER})
 public class ProductsController {
 
     @Autowired
@@ -22,17 +23,10 @@ public class ProductsController {
     private ProductsModel productDetail;
 
     @RequestMapping(value = "/fruits",method = RequestMethod.GET)
-    public String fruits (Model model) {
+    public String fruits (Model model,@ModelAttribute(value = "session") SessionModel sessionModel) {
         int id = 1;
         ArrayList<ProductsModel> fruitsListing = new ArrayList<>();
-
-        for (ProductsModel fruit: productsService.getAllProducts())
-        {
-            if (fruit.getCategoryProduct() == 1)
-            {
-                fruitsListing.add(fruit);
-            }
-        }
+        fruitsListing = productsService.getAllProductsByCategory(1);
 
         model.addAttribute("productsListing",fruitsListing);
         model.addAttribute("title","Fruits");
@@ -40,7 +34,7 @@ public class ProductsController {
     }
 
     @RequestMapping(value = "/legumes",method = RequestMethod.GET)
-    public String legumes (Model model)
+    public String legumes (Model model,@ModelAttribute (value = "session")SessionModel sessionModel)
     {
         ArrayList<ProductsModel> legumesListing = new ArrayList<>();
 
@@ -60,7 +54,7 @@ public class ProductsController {
 
 
     @RequestMapping (value = "/detail/{productId}",method = RequestMethod.GET)
-    public String detailProduct (Model model, @PathVariable int productId)
+    public String detailProduct (Model model, @PathVariable int productId,@ModelAttribute (value = "session")SessionModel sessionModel)
     {
         productDetail =productsService.getProduct(productId);
 
@@ -82,9 +76,17 @@ public class ProductsController {
         return "integrated:productDetail";
     }
 
+    @RequestMapping (method = RequestMethod.POST)
+    public String addChoice (Model model,@ModelAttribute (value = "session")SessionModel sessionModel)
+    {
+
+
+        return "redirect:/"+ sessionModel.getCurrentPage();
+    }
+
 
     @RequestMapping(value = "/calendar",method = RequestMethod.GET)
-    public String calendar (Model model){
+    public String calendar (Model model,@ModelAttribute (value = "session")SessionModel sessionModel){
 
         ArrayList<ProductsModel> productsList = new ArrayList<>();
         productsList = productsService.getAllProducts();

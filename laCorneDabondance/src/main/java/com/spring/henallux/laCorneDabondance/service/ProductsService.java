@@ -17,7 +17,7 @@ public class ProductsService {
     public ProductsModel getProduct(Integer id) {return productsDAO.findProductByID(id);}
     public ArrayList<ProductsModel> getAllProducts () {return productsDAO.getAllProducts();}
     public ArrayList<ProductsModel> getSeasonProducts () {return productsDAO.getSeasonProducts();}
-
+    public ArrayList<ProductsModel> getAllProductsByCategory (Integer category) {return productsDAO.getAllProductByCategory(category);}
 
 
 }

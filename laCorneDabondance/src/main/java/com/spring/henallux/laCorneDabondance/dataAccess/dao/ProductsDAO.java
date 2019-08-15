@@ -6,10 +6,7 @@ import com.spring.henallux.laCorneDabondance.dataAccess.util.ProductsConverter;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
-import java.sql.Time;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -59,7 +56,7 @@ public class ProductsDAO {
         ArrayList<ProductsModel> productsModels = new ArrayList<>();
         GregorianCalendar toDay = new GregorianCalendar();
         toDay.setTimeInMillis(System.currentTimeMillis());
-        toDay.set(Calendar.MONTH,toDay.get(Calendar.MONTH)+1);
+        toDay.set(Calendar.MONTH,toDay.get(Calendar.MONTH)+1);  // Compenser le 0 à 11 pour 1 à 12 du type
 
         for (ProductsEntity entity : productsEntities)
         {
@@ -74,6 +71,18 @@ public class ProductsDAO {
                 }
 
             }
+        }
+        return productsModels;
+    }
+
+    public ArrayList<ProductsModel> getAllProductByCategory(Integer category) {
+
+        List <ProductsEntity> productsEntities = productsRepository.findAllByCategoryProduct(category);
+        ArrayList<ProductsModel> productsModels = new ArrayList<>();
+        for (ProductsEntity entity : productsEntities)
+        {
+            ProductsModel productsModel = productsConverter.productsEntityToProductsModel(entity);
+            productsModels.add(productsModel);
         }
         return productsModels;
     }
