@@ -2,22 +2,13 @@ package com.spring.henallux.laCorneDabondance.model;
 
 public class MarketModel {
 
-    private ProductsModel productsModel;
     private Integer idOrder;
-    private Integer quantityOrder;
+    private MarketLineModel marketLineModel;
 
     public MarketModel () {}
 
 
-    public ProductsModel getProductsModel() {
-        return productsModel;
-    }
-
-    public void setProductsModel(ProductsModel productsModel) {
-        this.productsModel = productsModel;
-    }
-
-    public Integer getIdOrder() {
+     public Integer getIdOrder() {
         return idOrder;
     }
 
@@ -25,11 +16,11 @@ public class MarketModel {
         this.idOrder = idOrder;
     }
 
-    public Integer getQuantityOrder() {
-        return quantityOrder;
+    public MarketLineModel getMarketLineModel() {
+        return marketLineModel;
     }
 
-    public void setQuantityOrder(Integer quantityOrder) {
-        this.quantityOrder = quantityOrder;
+    public void setMarketLineModel(MarketLineModel marketLineModel) {
+        this.marketLineModel = marketLineModel;
     }
 }

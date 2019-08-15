@@ -1,6 +1,7 @@
 package com.spring.henallux.laCorneDabondance.controller;
 
 import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration;
+import com.spring.henallux.laCorneDabondance.model.MarketModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import com.spring.henallux.laCorneDabondance.model.SessionModel;
 import com.spring.henallux.laCorneDabondance.service.ProductsService;
@@ -21,6 +22,7 @@ public class ProductsController {
     @Autowired
     private ProductsService productsService;
     private ProductsModel productDetail;
+    private MarketModel market;
 
     @RequestMapping(value = "/fruits",method = RequestMethod.GET)
     public String fruits (Model model,@ModelAttribute(value = "session") SessionModel sessionModel) {
