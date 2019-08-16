@@ -33,7 +33,7 @@
     <li><a href="<spring:url value='/home/contact'/>">Contact</a></li>
     <li class="right"><a href="#frenchFlag"><img class="icon" src="<spring:url value='/images/french-flag.png'/>" alt="frenchFlag"/></a></li>
     <li class="right"><a href="#englishFlag"><img class="icon" src='<spring:url value="/images/english-flag.jpg"/>' alt="englishFlag"/></a></li>
-    <li class="right"><a href="#shopIcon" onclick="document.getElementById('panier').style.display='block'" style="width:auto;"><img class="icon" src='<spring:url value="/images/panier.png"/>' alt="shopIcon"></a></li>
+    <li class="right"><a onclick="document.getElementById('panier').style.display='block'" style="width:auto;"><img class="icon" src='<spring:url value="/images/panier.png"/>' alt="shopIcon"></a></li>
     <li class="right"><a><button onclick="document.getElementById('log').style.display='block'" style="width:auto;"  class="buttonNavBar">Inscription/Connexion</button></a></li>
 
     <li class="search-container">
@@ -103,6 +103,9 @@
                     <td>${market.getProductsModel().getCatalogPrice()} </td>
                     <td>${market.getQuantity()} </td>
                     <td>${market.getProductsModel().getCatalogPrice() * market.getQuantity()}</td>
+                    <td><a><button class="buttonNavBar" style="background-color: cornflowerblue">Modifier</button></a></td>
+                    <td><a href="<spring:url value='/products/deleteProduct/${market.getIdLine()}'  />"><button class="buttonNavBar" style="background-color: red">Supprimer</button></a></td>
+
 
                 </tr>
             </c:forEach>

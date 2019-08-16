@@ -27,7 +27,7 @@
 
             <form:form action="/laCorneDabondance/products/addProduct" id="addProduct" method="post" modelAttribute="session">
                <form:label path="orderQuantity">Quantité :</form:label>
-                <form:input path="orderQuantity" type="number" name="quantity" min="1" max="${detailQuant}" id='inputCommand' />
+                <form:input path="orderQuantity" type="number"  name="quantity" value="0" min="1" max="${detailQuant}" id='inputCommand' />
                 <form:button >Ajouter au panier</form:button>
 
             </form:form>

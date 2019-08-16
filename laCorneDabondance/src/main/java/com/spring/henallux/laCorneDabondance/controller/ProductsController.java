@@ -78,8 +78,6 @@ public class ProductsController {
         session.setProductsModel(productDetail);
 
 
-
-
         model.addAttribute("title",productDetail.getName());
         return "integrated:productDetail";
     }
@@ -89,11 +87,16 @@ public class ProductsController {
     {
         MarketLineModel marketLine = new MarketLineModel();
         ArrayList<MarketLineModel> marketLines = new ArrayList<>();
+        Integer idList = 1;
 
         if (session.getMarketModel().getMarketLineModel() != null)
         {
             marketLines = session.getMarketModel().getMarketLineModel();
+            idList = marketLines.size()+1;
 
+        } else
+        {
+            session.getMarketModel().setIdOrder(1); // Faire le lien avec la BD pour avoir l'ID max de command
         }
 
 
@@ -103,6 +106,22 @@ public class ProductsController {
         marketLines.add(marketLine);
 
         session.getMarketModel().setMarketLineModel(marketLines);
+
+        return  "redirect:/"+session.getCurrentPage();
+    }
+
+    @RequestMapping (value = "/deleteProduct/{market.getIdLine()}",method = RequestMethod.POST)
+    public String deleteChoiceMarket (Model model, @PathVariable Integer idLine,@ModelAttribute (value = "session")SessionModel session)
+    {
+
+        for (:
+             ) {
+            
+        }
+        
+        
+        session.getMarketModel().getMarketLineModel().remove(market);
+
 
         return  "redirect:/"+session.getCurrentPage();
     }

@@ -2,6 +2,7 @@ package com.spring.henallux.laCorneDabondance.model;
 
 public class MarketLineModel {
 
+    private Integer idLine;
     private ProductsModel productsModel;
     private Integer quantity;
 
@@ -24,4 +25,11 @@ public class MarketLineModel {
         this.quantity = quantity;
     }
 
+    public Integer getIdLine() {
+        return idLine;
+    }
+
+    public void setIdLine(Integer idLine) {
+        this.idLine = idLine;
+    }
 }
