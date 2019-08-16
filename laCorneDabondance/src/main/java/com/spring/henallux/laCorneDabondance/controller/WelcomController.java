@@ -26,7 +26,7 @@ public class WelcomController extends SessionController {
     private ProductsModel welcomFruit,welcomLegume;
 
     @RequestMapping (method = RequestMethod.GET)
-    public String home (Model model, @ModelAttribute (value = "session")SessionModel sessionModel){
+    public String home (Model model, @ModelAttribute (value = "session")SessionModel session){
 
 
         Random random = new Random();
@@ -76,7 +76,7 @@ public class WelcomController extends SessionController {
 
 
     @RequestMapping(value ="/contact",method = RequestMethod.GET)
-    public String contact (Model model, @ModelAttribute (value = "session")SessionModel sessionModel) {
+    public String contact (Model model, @ModelAttribute (value = "session")SessionModel session) {
 
         model.addAttribute("title","Contact");
         return "integrated:contact";

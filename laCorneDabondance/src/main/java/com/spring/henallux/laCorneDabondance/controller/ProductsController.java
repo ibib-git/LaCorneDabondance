@@ -1,62 +1,63 @@
 package com.spring.henallux.laCorneDabondance.controller;
 
 import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration;
-import com.spring.henallux.laCorneDabondance.model.MarketModel;
+import com.spring.henallux.laCorneDabondance.model.MarketLineModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import com.spring.henallux.laCorneDabondance.model.SessionModel;
+import com.spring.henallux.laCorneDabondance.service.OrderCommandService;
 import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 @Controller
 @RequestMapping (value = "/products")
 @SessionAttributes({ConstantConfiguration.SESSION,ConstantConfiguration.CURRENT_USER})
 public class ProductsController {
 
+
     @Autowired
     private ProductsService productsService;
     private ProductsModel productDetail;
-    private MarketModel market;
+    private OrderCommandService orderCommandService;
 
     @RequestMapping(value = "/fruits",method = RequestMethod.GET)
-    public String fruits (Model model,@ModelAttribute(value = "session") SessionModel sessionModel) {
+    public String fruits (Model model,@ModelAttribute(value = "session") SessionModel session) {
         int id = 1;
         ArrayList<ProductsModel> fruitsListing = new ArrayList<>();
         fruitsListing = productsService.getAllProductsByCategory(1);
 
         model.addAttribute("productsListing",fruitsListing);
         model.addAttribute("title","Fruits");
+
+        session.setCurrentPage("products/fruits");
+
         return "integrated:products";
     }
 
     @RequestMapping(value = "/legumes",method = RequestMethod.GET)
-    public String legumes (Model model,@ModelAttribute (value = "session")SessionModel sessionModel)
+    public String legumes (Model model,@ModelAttribute (value = "session")SessionModel session)
     {
+        int id = 2;
         ArrayList<ProductsModel> legumesListing = new ArrayList<>();
+        legumesListing = productsService.getAllProductsByCategory(2);
 
-        for (ProductsModel legume: productsService.getAllProducts())
-        {
-            if (legume.getCategoryProduct() == 2)
-            {
-                legumesListing.add(legume);
-            }
-        }
+        model.addAttribute("productsListing",legumesListing);
 
         model.addAttribute("productsListing",legumesListing);
         model.addAttribute("title","Légumes");
+
+        session.setCurrentPage("products/legumes");
         return "integrated:products";
     }
 
 
 
     @RequestMapping (value = "/detail/{productId}",method = RequestMethod.GET)
-    public String detailProduct (Model model, @PathVariable int productId,@ModelAttribute (value = "session")SessionModel sessionModel)
+    public String detailProduct (Model model, @PathVariable int productId,@ModelAttribute (value = "session")SessionModel session)
     {
         productDetail =productsService.getProduct(productId);
 
@@ -74,21 +75,41 @@ public class ProductsController {
         model.addAttribute("detailArriv",productDetail.getDateArrival());
         model.addAttribute("detailQuant",productDetail.getQuantity());
 
+        session.setProductsModel(productDetail);
+
+
+
+
         model.addAttribute("title",productDetail.getName());
         return "integrated:productDetail";
     }
 
-    @RequestMapping (method = RequestMethod.POST)
-    public String addChoice (Model model,@ModelAttribute (value = "session")SessionModel sessionModel)
+    @RequestMapping (value = "/addProduct",method = RequestMethod.POST)
+    public String addChoiceMarket (Model model,@ModelAttribute (value = "session")SessionModel session)
     {
+        MarketLineModel marketLine = new MarketLineModel();
+        ArrayList<MarketLineModel> marketLines = new ArrayList<>();
+
+        if (session.getMarketModel().getMarketLineModel() != null)
+        {
+            marketLines = session.getMarketModel().getMarketLineModel();
+
+        }
 
 
-        return "redirect:/"+ sessionModel.getCurrentPage();
+        marketLine.setQuantity(session.getOrderQuantity());
+        marketLine.setProductsModel(session.getProductsModel());
+
+        marketLines.add(marketLine);
+
+        session.getMarketModel().setMarketLineModel(marketLines);
+
+        return  "redirect:/"+session.getCurrentPage();
     }
 
 
     @RequestMapping(value = "/calendar",method = RequestMethod.GET)
-    public String calendar (Model model,@ModelAttribute (value = "session")SessionModel sessionModel){
+    public String calendar (Model model,@ModelAttribute (value = "session")SessionModel session){
 
         ArrayList<ProductsModel> productsList = new ArrayList<>();
         productsList = productsService.getAllProducts();

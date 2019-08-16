@@ -25,11 +25,12 @@
             <c:choose>
                 <c:when test="${detailQuant > 0}">
 
-            <form action="/laCorneDabondance/products/addProduct" id="addProduct" method="post" modelAttribute="session">
-                Quantité : <input type="number" name="quantity" min="1" max="${detailQuant}" id='inputCommand' />
-                <input type="submit" value="Ajouter au panier" id='buttonCommand'>
+            <form:form action="/laCorneDabondance/products/addProduct" id="addProduct" method="post" modelAttribute="session">
+               <form:label path="orderQuantity">Quantité :</form:label>
+                <form:input path="orderQuantity" type="number" name="quantity" min="1" max="${detailQuant}" id='inputCommand' />
+                <form:button >Ajouter au panier</form:button>
 
-            </form>
+            </form:form>
                 </c:when>
                 <c:otherwise><p>Produit indisponible</p></c:otherwise>
             </c:choose>

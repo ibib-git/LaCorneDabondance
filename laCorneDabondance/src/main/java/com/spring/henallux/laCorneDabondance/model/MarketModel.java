@@ -1,9 +1,11 @@
 package com.spring.henallux.laCorneDabondance.model;
 
+import java.util.ArrayList;
+
 public class MarketModel {
 
     private Integer idOrder;
-    private MarketLineModel marketLineModel;
+    private ArrayList <MarketLineModel> marketLineModel;
 
     public MarketModel () {}
 
@@ -16,11 +18,13 @@ public class MarketModel {
         this.idOrder = idOrder;
     }
 
-    public MarketLineModel getMarketLineModel() {
+
+    public ArrayList<MarketLineModel> getMarketLineModel() {
         return marketLineModel;
     }
 
-    public void setMarketLineModel(MarketLineModel marketLineModel) {
+    public void setMarketLineModel(ArrayList<MarketLineModel> marketLineModel) {
         this.marketLineModel = marketLineModel;
     }
+
 }

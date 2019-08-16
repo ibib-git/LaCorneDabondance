@@ -85,11 +85,33 @@
         <div class="img-login">
             <span onclick="document.getElementById('panier').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src='<spring:url value="/images/images-ico.ico"/>' alt="logPicture" class="avatar">
+            <h3>Panier de la commande</h3>
         </div>
+    <table>
+
+        <tr>
+            <th>Nom du produit</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Total</th>
+        </tr>
 
         <div class="container-login">
+            <c:forEach items="${session.getMarketModel().getMarketLineModel()}" var="market">
+                <tr>
+                    <td>${market.getProductsModel().getName()} </td>
+                    <td>${market.getProductsModel().getCatalogPrice()} </td>
+                    <td>${market.getQuantity()} </td>
+                    <td>${market.getProductsModel().getCatalogPrice() * market.getQuantity()}</td>
+
+                </tr>
+            </c:forEach>
 
         </div>
+
+
+    </table>
+
 
 
         <div class="container" style="background-color:#f1f1f1">

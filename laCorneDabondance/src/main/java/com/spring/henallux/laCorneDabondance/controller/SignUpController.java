@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class SignUpController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String register (Model model,@ModelAttribute(value = "session") SessionModel sessionModel){
+    public String register (Model model,@ModelAttribute(value = "session") SessionModel session){
 
         model.addAttribute("title","Inscription");
         return "integrated:signUp";

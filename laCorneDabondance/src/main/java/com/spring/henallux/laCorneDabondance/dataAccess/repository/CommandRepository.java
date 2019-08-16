@@ -11,5 +11,4 @@ public interface CommandRepository extends JpaRepository<CommandEntity,Integer> 
 
     CommandEntity findById(Integer id);
     ArrayList<CommandEntity> findAll();
-    ArrayList<CommandEntity> findAllByUser();
 }

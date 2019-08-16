@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderLineRepository extends JpaRepository<OrderLineEntity,Integer> {
 
-    OrderLineEntity findById();
-    OrderLineEntity findAllByCommandId();
+    OrderLineEntity findById(Integer id);
+   // OrderLineEntity findAllByCommandId();
 
 }
