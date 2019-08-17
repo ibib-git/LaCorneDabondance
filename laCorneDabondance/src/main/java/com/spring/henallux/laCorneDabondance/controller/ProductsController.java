@@ -82,17 +82,33 @@ public class ProductsController {
         return "integrated:productDetail";
     }
 
+    @RequestMapping (value = "/return",method = RequestMethod.POST)
+    public String returnButton (Model model,@ModelAttribute (value = "session")SessionModel session)
+    {
+        return  "redirect:/"+session.getCurrentPage();
+    }
+
     @RequestMapping (value = "/addProduct",method = RequestMethod.POST)
     public String addChoiceMarket (Model model,@ModelAttribute (value = "session")SessionModel session)
     {
         MarketLineModel marketLine = new MarketLineModel();
         ArrayList<MarketLineModel> marketLines = new ArrayList<>();
-        Integer idList = 1;
+        Integer idList = 0;
+
+
 
         if (session.getMarketModel().getMarketLineModel() != null)
         {
-            marketLines = session.getMarketModel().getMarketLineModel();
-            idList = marketLines.size()+1;
+            marketLines =  session.getMarketModel().getMarketLineModel();
+
+
+            for (MarketLineModel marketLineModel: marketLines)
+            {
+                idList = marketLineModel.getIdLine();
+            }
+
+            idList++;
+
 
         } else
         {
@@ -102,7 +118,7 @@ public class ProductsController {
 
         marketLine.setQuantity(session.getOrderQuantity());
         marketLine.setProductsModel(session.getProductsModel());
-
+        marketLine.setIdLine(idList);
         marketLines.add(marketLine);
 
         session.getMarketModel().setMarketLineModel(marketLines);
@@ -110,22 +126,17 @@ public class ProductsController {
         return  "redirect:/"+session.getCurrentPage();
     }
 
-    @RequestMapping (value = "/deleteProduct/{market.getIdLine()}",method = RequestMethod.POST)
-    public String deleteChoiceMarket (Model model, @PathVariable Integer idLine,@ModelAttribute (value = "session")SessionModel session)
+    @RequestMapping (value = "deleteProduct/{idLine}",method = RequestMethod.GET)
+    public String deleteChoiceMarket (Model model,@PathVariable int idLine,@ModelAttribute (value = "session")SessionModel session)
     {
+        ArrayList<MarketLineModel> marketLines =  session.getMarketModel().getMarketLineModel();
 
-        for (:
-             ) {
-            
-        }
-        
-        
-        session.getMarketModel().getMarketLineModel().remove(market);
+        marketLines.remove(idLine);
 
+        session.getMarketModel().setMarketLineModel(marketLines);
 
         return  "redirect:/"+session.getCurrentPage();
     }
-
 
     @RequestMapping(value = "/calendar",method = RequestMethod.GET)
     public String calendar (Model model,@ModelAttribute (value = "session")SessionModel session){

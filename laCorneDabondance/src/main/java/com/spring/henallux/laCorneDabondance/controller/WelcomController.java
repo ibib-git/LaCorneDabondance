@@ -22,7 +22,7 @@ public class WelcomController extends SessionController {
 
     @Autowired
     private ProductsService productsService;
-    private ArrayList<ProductsModel> productsListing;
+    private ArrayList<ProductsModel> productsListing,productsAllList;
     private ProductsModel welcomFruit,welcomLegume;
 
     @RequestMapping (method = RequestMethod.GET)
@@ -64,10 +64,8 @@ public class WelcomController extends SessionController {
         model.addAttribute("welcomLegumeId",welcomLegume.getId());
         model.addAttribute("title","La Corne d'Abondance");
 
-        ArrayList<ProductsModel> productsList = new ArrayList<>();
-        productsList = productsService.getAllProducts();
-
-        model.addAttribute("productsList",productsList);
+        productsAllList = productsService.getAllProducts();
+        model.addAttribute("productsList",productsAllList);
 
         return "integrated:welcom";
 
@@ -81,6 +79,8 @@ public class WelcomController extends SessionController {
         model.addAttribute("title","Contact");
         return "integrated:contact";
     }
+
+
 
 
 

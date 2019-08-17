@@ -1,5 +1,6 @@
 <%@include file="../include/importTags.jsp"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@page contentType="text/html; charset=UTF-8" %>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,17 +18,17 @@
 <!-- Header -->
 <div class="header" style="background-image: url('<spring:url value="/images/Corne-dAbondance.jpg"/>')";>
     <h1>La Corne d'abondance</h1>
-    <p>Vente de fruits et legumes belges</p>
+    <p>Vente de fruits et légumes belges</p>
 </div>
 
 <!-- Navigation Bar -->
 <ul class="navbar">
     <li><a href="<spring:url value='/home'/>">Accueil</a></li>
     <li class="dropdown">
-        <a href="#category">Categorie</a>
+        <a href="#category">Catégorie</a>
         <div class="dropdown-content">
             <a href="<spring:url value='/products/fruits'/>">Fruits</a>
-            <a href="<spring:url value='/products/legumes'/>">Legumes</a>
+            <a href="<spring:url value='/products/legumes'/>">Légumes</a>
         </div></li>
     <li><a href="<spring:url value='/products/calendar'/>">Calendrier</a></li>
     <li><a href="<spring:url value='/home/contact'/>">Contact</a></li>
@@ -91,7 +92,7 @@
 
         <tr>
             <th>Nom du produit</th>
-            <th>Prix</th>
+            <th>Prix unitaire</th>
             <th>Quantité</th>
             <th>Total</th>
         </tr>
@@ -102,9 +103,9 @@
                     <td>${market.getProductsModel().getName()} </td>
                     <td>${market.getProductsModel().getCatalogPrice()} </td>
                     <td>${market.getQuantity()} </td>
-                    <td>${market.getProductsModel().getCatalogPrice() * market.getQuantity()}</td>
-                    <td><a><button class="buttonNavBar" style="background-color: cornflowerblue">Modifier</button></a></td>
-                    <td><a href="<spring:url value='/products/deleteProduct/${market.getIdLine()}'  />"><button class="buttonNavBar" style="background-color: red">Supprimer</button></a></td>
+                    <td><fmt:formatNumber type="number" maxFractionDigits="2" value=" ${market.getProductsModel().getCatalogPrice() * market.getQuantity()}"/></td>
+                    <td><a href="<spring:url value='/products/deleteProduct/${market.getIdLine()}'/>"><button class="buttonNavBar" style="background-color: cornflowerblue">Modifier</button></a></td>
+                    <td><a href="<spring:url value='/products/deleteProduct/${market.getIdLine()}'/>"><button class="buttonNavBar" type="button" style="background-color: red">Supprimer</button></a></td>
 
 
                 </tr>
@@ -244,13 +245,13 @@
     }
 
     /*An array containing all the country names in the world:*/
-    var countries = ["Pomme","Poire"];
-    <c:forEach items="${productsList}" var="product">
-    countries = countries +',"${product.getName()}"';
+    var countries = [];
+    <c:forEach items="${productsAllList}" var="product">
+    var newElement = countries.push("${product.getName()}");
     </c:forEach>
 
     /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-    autocomplete(document.getElementById("mySearch"), countries);
+    autocomplete(document.getElementById("mySearch"),countries );
 
 </script>
 
@@ -270,8 +271,8 @@
 <!-- Footer -->
 <div class="footer">
     <h3>Qui sommes nous ?</h3>
-    <p>Projet etudiant cree en 2019,la corne d'abondance a pour vocation de faciliter la vente de produits issuent de l'agriculture belge. <br>
-        Cette platforme en ligne est l'idee de la mise en relation de producteurs locaux. <br>
+    <p>Projet étudiant créé en 2019,la corne d'abondance a pour vocation de faciliter la vente de produits issuent de l'agriculture belge. <br>
+        Cette platforme en ligne est l'idée de la mise en relation de producteurs locaux. <br>
     </p>
 
     <P>© Fricot Damien </P>

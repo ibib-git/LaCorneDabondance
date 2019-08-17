@@ -12,4 +12,5 @@ public interface ProductsRepository extends JpaRepository<ProductsEntity, Intege
     ArrayList<ProductsEntity> findAll();
     ArrayList<ProductsEntity> findAllByCategoryProduct(Integer category);
 
+
 }
