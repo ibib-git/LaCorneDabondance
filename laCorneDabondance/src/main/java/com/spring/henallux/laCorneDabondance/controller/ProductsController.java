@@ -77,6 +77,26 @@ public class ProductsController {
 
         session.setProductsModel(productDetail);
 
+        Boolean isUpdate = false;   // On va tester si le produit existe déjà dans le panier
+        Integer defaultValue = 0;
+
+        if (session.getMarketModel().getMarketLineModel() != null)
+        {
+            for (MarketLineModel marketLines: session.getMarketModel().getMarketLineModel())
+            {
+                if (marketLines.getProductsModel().getId() == session.getProductsModel().getId())
+                {
+                    isUpdate = true;
+                    defaultValue = marketLines.getQuantity();
+                    model.addAttribute("idLineUpdate",marketLines.getIdLine());
+                    break;
+                }
+
+            }
+        }
+
+        model.addAttribute("isUpdate",isUpdate);
+        model.addAttribute("defaultValue",defaultValue);
 
         model.addAttribute("title",productDetail.getName());
         return "integrated:productDetail";
@@ -132,6 +152,37 @@ public class ProductsController {
         ArrayList<MarketLineModel> marketLines =  session.getMarketModel().getMarketLineModel();
 
         marketLines.remove(idLine);
+
+        session.getMarketModel().setMarketLineModel(marketLines);
+
+        return  "redirect:/"+session.getCurrentPage();
+    }
+
+    @RequestMapping (value = "updateProduct/{idLine}",method = RequestMethod.GET)
+    public String updateChoiceMarket (Model model,@PathVariable int idLine,@ModelAttribute (value = "session")SessionModel session)
+    {
+        ArrayList<MarketLineModel> marketLines =  session.getMarketModel().getMarketLineModel();
+        MarketLineModel marketLineModel = marketLines.get(idLine);
+
+        Integer idProduct = marketLineModel.getProductsModel().getId();
+
+        return  "redirect:/products/detail/"+idProduct;
+    }
+
+    @RequestMapping (value = "/updateQuantProduct/{idLineUpdate}",method = RequestMethod.POST)
+    public String updateQuantChoiceMarket (Model model,@PathVariable int idLineUpdate,@ModelAttribute (value = "session")SessionModel session)
+    {
+        MarketLineModel marketLine = new MarketLineModel();
+        ArrayList<MarketLineModel> marketLines = new ArrayList<>();
+
+            marketLines =  session.getMarketModel().getMarketLineModel();
+            marketLine = marketLines.get(idLineUpdate);
+
+
+        marketLine.setQuantity(session.getOrderQuantity());
+
+        marketLines.remove(idLineUpdate);
+        marketLines.add(marketLine);
 
         session.getMarketModel().setMarketLineModel(marketLines);
 

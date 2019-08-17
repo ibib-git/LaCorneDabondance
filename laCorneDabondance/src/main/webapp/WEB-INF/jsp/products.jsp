@@ -11,7 +11,7 @@
 
 <div class="container-title">
     <h1>Categorie</h1>
-    <p><h2>Fruits</h2></p>
+    <p><h2>${session.getCurrentPage()}</h2></p>
 
     <div class="flex-container">
 
@@ -21,6 +21,7 @@
                 <div>
                     <img class="image-product" src='<spring:url value="/images/${product.getPhotoLink()}"/>' alt="productIcon">
                     <h3>${product.getName()}</h3>
+                    <h4>${product.getCatalogPrice()} €/unité</h4>
                 </div>
             </a>
 

@@ -104,7 +104,7 @@
                     <td>${market.getProductsModel().getCatalogPrice()} </td>
                     <td>${market.getQuantity()} </td>
                     <td><fmt:formatNumber type="number" maxFractionDigits="2" value=" ${market.getProductsModel().getCatalogPrice() * market.getQuantity()}"/></td>
-                    <td><a href="<spring:url value='/products/deleteProduct/${market.getIdLine()}'/>"><button class="buttonNavBar" style="background-color: cornflowerblue">Modifier</button></a></td>
+                    <td><a href="<spring:url value='/products/updateProduct/${market.getIdLine()}'/>"><button class="buttonNavBar" type="button" style="background-color: cornflowerblue">Modifier</button></a></td>
                     <td><a href="<spring:url value='/products/deleteProduct/${market.getIdLine()}'/>"><button class="buttonNavBar" type="button" style="background-color: red">Supprimer</button></a></td>
 
 
