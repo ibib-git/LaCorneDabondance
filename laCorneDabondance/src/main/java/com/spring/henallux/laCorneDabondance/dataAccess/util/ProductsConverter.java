@@ -1,10 +1,10 @@
 package com.spring.henallux.laCorneDabondance.dataAccess.util;
 
+import com.spring.henallux.laCorneDabondance.dataAccess.entity.CategoryEntity;
 import com.spring.henallux.laCorneDabondance.dataAccess.entity.ProductsEntity;
-import com.spring.henallux.laCorneDabondance.model.MarketModel;
+import com.spring.henallux.laCorneDabondance.model.CategoryModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import org.springframework.stereotype.Component;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -38,7 +38,7 @@ public class ProductsConverter {
         productsEntity.setDescription(productsModel.getDescription());
         productsEntity.setPhotoLink(productsModel.getPhotoLink());
         productsEntity.setQuantity(productsModel.getQuantity());
-        productsEntity.setCategoryProduct(productsModel.getCategoryProduct());
+        productsEntity.setCategoryEntity(categoryModelToEntity(productsModel.getCategoryModel()));
         return productsEntity;
     }
 
@@ -72,8 +72,26 @@ public class ProductsConverter {
         productsModel.setDescription(productsEntity.getDescription());
         productsModel.setPhotoLink(productsEntity.getPhotoLink());
         productsModel.setQuantity(productsEntity.getQuantity());
-        productsModel.setCategoryProduct(productsEntity.getCategoryProduct());
+        productsModel.setCategoryModel(categoryEntityToModel(productsEntity.getCategoryEntity()));
         return productsModel;
+    }
+
+    public CategoryEntity categoryModelToEntity (CategoryModel categoryModel)
+    {
+        CategoryEntity categoryEntity = new CategoryEntity();
+
+        categoryEntity.setId(categoryModel.getId());
+
+        return categoryEntity;
+    }
+
+    public CategoryModel categoryEntityToModel (CategoryEntity categoryEntity)
+    {
+        CategoryModel categoryModel = new CategoryModel();
+
+        categoryModel.setId(categoryEntity.getId());
+
+        return categoryModel;
     }
 
 

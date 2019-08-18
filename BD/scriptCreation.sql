@@ -17,7 +17,6 @@ create table user (
     mail varchar(45) not null,
     adressPrivate varchar(45) not null,
     adressDelivery varchar(45) not null,
-    birthday date not null,
     password varchar(45) not null,
     enabled boolean not null)
     engine = InnoDB;
@@ -37,8 +36,7 @@ create table language (
     engine = InnoDB;
 
 create table category (
-	id int primary key not null,
-    libelle varchar(45) not null)
+	id int primary key not null)
     engine = InnoDB;
 
 create table traduction (
@@ -55,7 +53,7 @@ create table product (
     scientName varchar(45) not null,
     family varchar(45) not null,
     variety varchar(45),
-    catalogPrice float not null,
+    catalogPrice double not null,
     description varchar(1000) not null,
     lifespan int not null,
 	dateArrival date not null,

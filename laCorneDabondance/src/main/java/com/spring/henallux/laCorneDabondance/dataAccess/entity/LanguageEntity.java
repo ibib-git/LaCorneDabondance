@@ -1,19 +1,20 @@
 package com.spring.henallux.laCorneDabondance.dataAccess.entity;
 
-
 import javax.persistence.*;
 
 @Entity
-@Table (name = "category")
-public class CategoryEntity {
+@Table (name = "language")
+public class LanguageEntity {
 
     @Id
     @GeneratedValue
     @Column (name = "id")
     private Integer id;
 
+    @Column (name = "label")
+    private String label;
 
-    public CategoryEntity () {}
+    public LanguageEntity () {}
 
     public Integer getId() {
         return id;
@@ -23,4 +24,11 @@ public class CategoryEntity {
         this.id = id;
     }
 
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
 }

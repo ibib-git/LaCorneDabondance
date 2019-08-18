@@ -21,7 +21,7 @@
                 <div>
                     <img class="image-product" src='<spring:url value="/images/${product.getPhotoLink()}"/>' alt="productIcon">
                     <h3>${product.getName()}</h3>
-                    <h4>${product.getCatalogPrice()} €/unité</h4>
+                    <h4>${product.getCatalogPrice()} €/Kg</h4>
                 </div>
             </a>
 

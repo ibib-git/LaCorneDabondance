@@ -14,7 +14,7 @@ public class ProductsModel {
 
     private String variety;
 
-    private Float catalogPrice;
+    private Double catalogPrice;
 
     private String description;
 
@@ -30,7 +30,7 @@ public class ProductsModel {
 
     private Integer quantity;
 
-    private Integer categoryProduct;
+    private CategoryModel categoryModel;
 
     public ProductsModel (){}
 
@@ -98,19 +98,11 @@ public class ProductsModel {
         this.photoLink = photoLink;
     }
 
-    public int getCategoryProduct() {
-        return categoryProduct;
-    }
-
-    public void setCategoryProduct(Integer categoryProduct) {
-        this.categoryProduct = categoryProduct;
-    }
-
-    public Float getCatalogPrice() {
+    public Double getCatalogPrice() {
         return catalogPrice;
     }
 
-    public void setCatalogPrice(Float catalogPrice) {
+    public void setCatalogPrice(Double catalogPrice) {
         this.catalogPrice = catalogPrice;
     }
 
@@ -144,5 +136,13 @@ public class ProductsModel {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public CategoryModel getCategoryModel() {
+        return categoryModel;
+    }
+
+    public void setCategoryModel(CategoryModel categoryModel) {
+        this.categoryModel = categoryModel;
     }
 }

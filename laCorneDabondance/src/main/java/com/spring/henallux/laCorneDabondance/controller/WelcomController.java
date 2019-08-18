@@ -39,13 +39,13 @@ public class WelcomController extends SessionController {
         {
             indexRandom = random.nextInt(productsListing.size());
 
-            if (productsListing.get(indexRandom).getCategoryProduct() == 1)
+            if (productsListing.get(indexRandom).getCategoryModel().getId() == 1)
             {
                 welcomFruit = productsListing.get(indexRandom);
                 fruit = false;
             }
 
-            if (productsListing.get(indexRandom).getCategoryProduct() == 2)
+            if (productsListing.get(indexRandom).getCategoryModel().getId() == 2)
             {
                 welcomLegume = productsListing.get(indexRandom);
                 legume = false;

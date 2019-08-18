@@ -23,8 +23,7 @@
             <p>${detailDesc}</p>
             <h4>Saison du ${detailSeasonStart} au ${detailSeasonEnd}</h4>
             <h4>Temps de conservation : ${detailLife} jours</h4>
-            <h4>${detailPrice} €/Unité *</h4>
-            <h6>Une unité correspond à une masse de 200 gr</h6>
+            <h4>${detailPrice} €/Kg </h4>
             <c:choose>
                 <c:when test="${detailQuant > 0}">
 

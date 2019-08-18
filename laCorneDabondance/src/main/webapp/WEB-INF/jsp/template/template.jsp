@@ -92,9 +92,9 @@
 
         <tr>
             <th>Nom du produit</th>
-            <th>Prix unitaire</th>
+            <th>Prix unitaire (€)</th>
             <th>Quantité</th>
-            <th>Total</th>
+            <th>Total (€)</th>
         </tr>
 
         <div class="container-login">

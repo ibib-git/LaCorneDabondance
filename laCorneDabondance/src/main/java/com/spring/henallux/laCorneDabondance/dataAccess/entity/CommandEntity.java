@@ -20,6 +20,8 @@ public class CommandEntity {
     @Column (name = "user")
     private String user;
 
+    public CommandEntity () {}
+
 
     public Integer getId() {
         return id;

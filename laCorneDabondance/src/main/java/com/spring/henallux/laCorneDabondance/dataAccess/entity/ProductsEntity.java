@@ -26,7 +26,7 @@ public class ProductsEntity {
     private String variety;
 
     @Column (name = "catalogprice")
-    private Float catalogPrice;
+    private Double catalogPrice;
 
     @Column (name = "description")
     private String description;
@@ -52,8 +52,9 @@ public class ProductsEntity {
     @Column (name = "quantity")
     private Integer quantity;
 
-    @Column (name = "category")
-    private Integer categoryProduct;
+    @JoinColumn(name="category", referencedColumnName="id")
+    @ManyToOne
+    private CategoryEntity categoryEntity;
 
     public ProductsEntity (){}
 
@@ -122,19 +123,11 @@ public class ProductsEntity {
         this.photoLink = photoLink;
     }
 
-    public int getCategoryProduct() {
-        return categoryProduct;
-    }
-
-    public void setCategoryProduct(Integer categoryProduct) {
-        this.categoryProduct = categoryProduct;
-    }
-
-    public Float getCatalogPrice() {
+    public Double getCatalogPrice() {
         return catalogPrice;
     }
 
-    public void setCatalogPrice(Float catalogPrice) {
+    public void setCatalogPrice(Double catalogPrice) {
         this.catalogPrice = catalogPrice;
     }
 
@@ -169,5 +162,13 @@ public class ProductsEntity {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
+    }
+
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 }
