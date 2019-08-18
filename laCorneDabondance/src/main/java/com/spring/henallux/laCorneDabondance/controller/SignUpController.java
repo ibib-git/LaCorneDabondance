@@ -16,9 +16,20 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class SignUpController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String register (Model model,@ModelAttribute(value = "session") SessionModel session){
+    public String register (Model model,@ModelAttribute(value = "session") SessionModel session)
+    {
 
         model.addAttribute("title","Inscription");
         return "integrated:signUp";
     }
+
+    @RequestMapping (value = "/newUser",method = RequestMethod.POST)
+    public String addNewUser (Model model,@ModelAttribute(value = "session") SessionModel session)
+    {
+
+        return  "redirect:/home";
+    }
+
+
+
 }

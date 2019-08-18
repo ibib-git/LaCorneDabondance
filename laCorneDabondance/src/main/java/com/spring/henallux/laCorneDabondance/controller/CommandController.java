@@ -45,9 +45,12 @@ public class CommandController extends SessionController {
     @RequestMapping (value = "/toPay",method = RequestMethod.GET)
     public String toPay (Model model, @ModelAttribute(value = "session") SessionModel session){
 
-        // Enregistrer en BD le panier
+        commandService.saveMarket(session.getMarketModel());
+        commandService.updateQuantity(session.getMarketModel());
 
-        return "integrated:welcom";
+        // Normalement redirigé vers payement Paypal
+
+        return "integrated:payement";
 
     }
 }

@@ -39,7 +39,7 @@
 
             <h4> TOTAL : ${totalCommand} €</h4>
                 <h3>Doit vérifier si log avant</h3>
-            <a href="<spring:url value='/home'/>"><button class="buttonNavBar" type="button">Confirmer et payer</button></a>
+            <a href="<spring:url value='/command/toPay'/>"><button class="buttonNavBar" type="button">Confirmer et payer</button></a>
 
 
         </div>

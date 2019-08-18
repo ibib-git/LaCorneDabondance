@@ -86,5 +86,8 @@ public class CommandService {
 
     }
 
-
+    public void updateQuantity (MarketModel marketModel)
+    {
+        commandDAO.updateQuantity(marketModel);
+    }
 }
