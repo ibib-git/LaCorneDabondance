@@ -2,6 +2,7 @@ package com.spring.henallux.laCorneDabondance.dataAccess.entity;
 
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -17,8 +18,12 @@ public class CommandEntity {
     @Temporal(TemporalType.DATE)
     private Date dateCommand;
 
-    @Column (name = "user")
-    private String user;
+    @JoinColumn (name = "user",referencedColumnName = "login")
+    @ManyToOne
+    private UserEntity user;
+
+    @OneToMany (mappedBy = "command",fetch = FetchType.LAZY)
+    private Collection<OrderLineEntity> orderLineEntities;
 
     public CommandEntity () {}
 
@@ -39,11 +44,20 @@ public class CommandEntity {
         this.dateCommand = dateCommand;
     }
 
-    public String getUser() {
+
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    public Collection<OrderLineEntity> getOrderLineEntities() {
+        return orderLineEntities;
+    }
+
+    public void setOrderLineEntities(Collection<OrderLineEntity> orderLineEntities) {
+        this.orderLineEntities = orderLineEntities;
     }
 }

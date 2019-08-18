@@ -38,7 +38,7 @@ public class ProductsConverter {
         productsEntity.setDescription(productsModel.getDescription());
         productsEntity.setPhotoLink(productsModel.getPhotoLink());
         productsEntity.setQuantity(productsModel.getQuantity());
-        productsEntity.setCategoryEntity(categoryModelToEntity(productsModel.getCategoryModel()));
+        productsEntity.setCategory(categoryModelToEntity(productsModel.getCategoryModel()));
         return productsEntity;
     }
 
@@ -72,7 +72,7 @@ public class ProductsConverter {
         productsModel.setDescription(productsEntity.getDescription());
         productsModel.setPhotoLink(productsEntity.getPhotoLink());
         productsModel.setQuantity(productsEntity.getQuantity());
-        productsModel.setCategoryModel(categoryEntityToModel(productsEntity.getCategoryEntity()));
+        productsModel.setCategoryModel(categoryEntityToModel(productsEntity.getCategory()));
         return productsModel;
     }
 

@@ -4,7 +4,7 @@ import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration
 import com.spring.henallux.laCorneDabondance.model.MarketLineModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import com.spring.henallux.laCorneDabondance.model.SessionModel;
-import com.spring.henallux.laCorneDabondance.service.OrderCommandService;
+import com.spring.henallux.laCorneDabondance.service.CommandService;
 import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ public class ProductsController {
     @Autowired
     private ProductsService productsService;
     private ProductsModel productDetail;
-    private OrderCommandService orderCommandService;
+    private CommandService commandService;
 
     @RequestMapping(value = "/fruits",method = RequestMethod.GET)
     public String fruits (Model model,@ModelAttribute(value = "session") SessionModel session) {
@@ -41,7 +41,6 @@ public class ProductsController {
     @RequestMapping(value = "/legumes",method = RequestMethod.GET)
     public String legumes (Model model,@ModelAttribute (value = "session")SessionModel session)
     {
-        int id = 2;
         ArrayList<ProductsModel> legumesListing = new ArrayList<>();
         legumesListing = productsService.getAllProductsByCategory(2);
 
@@ -74,6 +73,7 @@ public class ProductsController {
         model.addAttribute("detailSeasonEnd",productDetail.getSeasonEnd().get(Calendar.DAY_OF_MONTH)+"/"+productDetail.getSeasonEnd().get(Calendar.MONTH)+"/"+productDetail.getSeasonEnd().get(Calendar.YEAR));
         model.addAttribute("detailArriv",productDetail.getDateArrival());
         model.addAttribute("detailQuant",productDetail.getQuantity());
+        //model.addAttribute("category",productsService.getLabel(productDetail.getCategoryModel().getId(),1));
 
         session.setProductsModel(productDetail);
 

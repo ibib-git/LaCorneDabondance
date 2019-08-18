@@ -11,7 +11,7 @@
 
 <div class="container-title">
     <h1>Categorie</h1>
-    <p><h2>${session.getCurrentPage()}</h2></p>
+    <p><h2>${category}</h2></p>
 
     <div class="flex-container">
 

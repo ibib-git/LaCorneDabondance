@@ -10,7 +10,7 @@ public interface ProductsRepository extends JpaRepository<ProductsEntity, Intege
 
     ProductsEntity  findById(Integer id);
     ArrayList<ProductsEntity> findAll();
-    ArrayList<ProductsEntity> findAllByCategoryProduct(Integer category);
+    ArrayList<ProductsEntity> findAllByCategoryId(Integer category);
 
 
 }

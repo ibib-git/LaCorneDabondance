@@ -35,8 +35,8 @@ public class TraductionConverter {
         TraductionEntity traductionEntity = new TraductionEntity();
 
         traductionEntity.setLabel(traductionModel.getLabel());
-        traductionEntity.setCategoryEntity(productsConverter.categoryModelToEntity(traductionModel.getCategoryModel()));
-        traductionEntity.setLanguageEntity(languageModelToEntity(traductionModel.getLanguageModel()));
+        traductionEntity.setCategory(productsConverter.categoryModelToEntity(traductionModel.getCategoryModel()));
+        traductionEntity.setLanguage(languageModelToEntity(traductionModel.getLanguageModel()));
 
         return traductionEntity;
     }
@@ -46,8 +46,8 @@ public class TraductionConverter {
         TraductionModel traductionModel = new TraductionModel();
 
         traductionModel.setLabel(traductionEntity.getLabel());
-        traductionModel.setCategoryModel(productsConverter.categoryEntityToModel(traductionEntity.getCategoryEntity()));
-        traductionModel.setLanguageModel(languageEntityToModel(traductionEntity.getLanguageEntity()));
+        traductionModel.setCategoryModel(productsConverter.categoryEntityToModel(traductionEntity.getCategory()));
+        traductionModel.setLanguageModel(languageEntityToModel(traductionEntity.getLanguage()));
 
         return traductionModel;
     }

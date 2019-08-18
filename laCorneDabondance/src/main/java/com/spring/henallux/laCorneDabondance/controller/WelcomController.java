@@ -1,6 +1,7 @@
 package com.spring.henallux.laCorneDabondance.controller;
 
 import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration;
+import com.spring.henallux.laCorneDabondance.model.CategoryModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import com.spring.henallux.laCorneDabondance.model.SessionModel;
 import com.spring.henallux.laCorneDabondance.service.ProductsService;
@@ -24,6 +25,7 @@ public class WelcomController extends SessionController {
     private ProductsService productsService;
     private ArrayList<ProductsModel> productsListing,productsAllList;
     private ProductsModel welcomFruit,welcomLegume;
+    private CategoryModel categoryModel;
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model, @ModelAttribute (value = "session")SessionModel session){
@@ -63,6 +65,8 @@ public class WelcomController extends SessionController {
         model.addAttribute("welcomLegumeDescription",welcomLegume.getDescription());
         model.addAttribute("welcomLegumeId",welcomLegume.getId());
         model.addAttribute("title","La Corne d'Abondance");
+
+
 
         productsAllList = productsService.getAllProducts();
         model.addAttribute("productsList",productsAllList);

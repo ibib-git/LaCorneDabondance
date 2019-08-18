@@ -20,11 +20,12 @@ public class OrderLineEntity {
     @Column (name = "orderquantity")
     private Integer orderQuantity;
 
-    @Column (name = "product")
-    private Integer productId;
+    @JoinColumn (name = "product",referencedColumnName = "id")
+    @ManyToOne
+    private ProductsEntity product;
 
-    @Column (name = "command")
-    private Integer commandId;
+    @JoinColumn (name = "command",referencedColumnName = "id")
+    private CommandEntity command;
 
     public OrderLineEntity () {}
 
@@ -61,19 +62,20 @@ public class OrderLineEntity {
         this.orderQuantity = orderQuantity;
     }
 
-    public Integer getProductId() {
-        return productId;
+
+    public ProductsEntity getProduct() {
+        return product;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setProduct(ProductsEntity product) {
+        this.product = product;
     }
 
-    public Integer getCommandId() {
-        return commandId;
+    public CommandEntity getCommand() {
+        return command;
     }
 
-    public void setCommandId(Integer commandId) {
-        this.commandId = commandId;
+    public void setCommand(CommandEntity command) {
+        this.command = command;
     }
 }

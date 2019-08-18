@@ -1,9 +1,17 @@
 package com.spring.henallux.laCorneDabondance.dataAccess.dao;
 
 import com.spring.henallux.laCorneDabondance.dataAccess.entity.ProductsEntity;
+import com.spring.henallux.laCorneDabondance.dataAccess.entity.TraductionEntity;
+import com.spring.henallux.laCorneDabondance.dataAccess.repository.CategoryRepository;
 import com.spring.henallux.laCorneDabondance.dataAccess.repository.ProductsRepository;
+import com.spring.henallux.laCorneDabondance.dataAccess.repository.TraductionRepository;
 import com.spring.henallux.laCorneDabondance.dataAccess.util.ProductsConverter;
+import com.spring.henallux.laCorneDabondance.dataAccess.util.TraductionConverter;
+import com.spring.henallux.laCorneDabondance.model.CategoryModel;
+import com.spring.henallux.laCorneDabondance.model.LanguageModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
+import com.spring.henallux.laCorneDabondance.model.TraductionModel;
+import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
@@ -17,12 +25,16 @@ import java.util.List;
 public class ProductsDAO {
 
     private ProductsRepository productsRepository;
+    private CategoryRepository categoryRepository;
+    private TraductionRepository traductionRepository;
     private ProductsConverter productsConverter;
+    private TraductionConverter traductionConverter;
 
     @Autowired
-    public ProductsDAO (ProductsRepository productsRepository,ProductsConverter productsConverter){
+    public ProductsDAO (ProductsRepository productsRepository,CategoryRepository categoryRepository,ProductsConverter productsConverter){
         this.productsRepository = productsRepository;
         this.productsConverter = productsConverter;
+        this.categoryRepository = categoryRepository;
     }
 
     public ProductsModel save (ProductsModel productsModel){
@@ -77,7 +89,7 @@ public class ProductsDAO {
 
     public ArrayList<ProductsModel> getAllProductByCategory(Integer category) {
 
-        List <ProductsEntity> productsEntities = productsRepository.findAllByCategoryProduct(category);
+        List <ProductsEntity> productsEntities = productsRepository.findAllByCategoryId(category);
         ArrayList<ProductsModel> productsModels = new ArrayList<>();
         for (ProductsEntity entity : productsEntities)
         {
@@ -86,4 +98,15 @@ public class ProductsDAO {
         }
         return productsModels;
     }
+
+    /*
+    public TraductionModel getLabelTraduction (Integer category,Integer language)
+    {
+        TraductionEntity traductionEntity = traductionRepository.findByCategoryAndLanguage(category,language);
+
+        TraductionModel label = traductionConverter.traductionEntityToModel(traductionEntity);
+
+        return label;
+    }
+    */
 }

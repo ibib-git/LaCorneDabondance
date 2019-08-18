@@ -2,6 +2,7 @@ package com.spring.henallux.laCorneDabondance.dataAccess.entity;
 
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -54,7 +55,10 @@ public class ProductsEntity {
 
     @JoinColumn(name="category", referencedColumnName="id")
     @ManyToOne
-    private CategoryEntity categoryEntity;
+    private CategoryEntity category;
+
+    @OneToMany (mappedBy = "product",fetch = FetchType.LAZY)
+    private Collection<OrderLineEntity> orderLineEntities;
 
     public ProductsEntity (){}
 
@@ -164,11 +168,19 @@ public class ProductsEntity {
         this.quantity = quantity;
     }
 
-    public CategoryEntity getCategoryEntity() {
-        return categoryEntity;
+    public CategoryEntity getCategory() {
+        return category;
     }
 
-    public void setCategoryEntity(CategoryEntity categoryEntity) {
-        this.categoryEntity = categoryEntity;
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
+    }
+
+    public Collection<OrderLineEntity> getOrderLineEntities() {
+        return orderLineEntities;
+    }
+
+    public void setOrderLineEntities(Collection<OrderLineEntity> orderLineEntities) {
+        this.orderLineEntities = orderLineEntities;
     }
 }

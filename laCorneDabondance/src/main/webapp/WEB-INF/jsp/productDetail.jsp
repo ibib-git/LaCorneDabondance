@@ -18,6 +18,7 @@
         <div>
 
             <img class="image-product" src='<spring:url value="/images/${detailImage}"/>' alt="img-${detailName}">
+            <h3></h3>
             <h3>${detailScient}</h3>
             <h4> Variété : ${detailVariety}</h4>
             <p>${detailDesc}</p>

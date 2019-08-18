@@ -5,6 +5,7 @@ public class MarketLineModel {
     private Integer idLine;
     private ProductsModel productsModel;
     private Integer quantity;
+    private Double finalPrice;
 
     public MarketLineModel () {}
 
@@ -31,5 +32,13 @@ public class MarketLineModel {
 
     public void setIdLine(Integer idLine) {
         this.idLine = idLine;
+    }
+
+    public Double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(Double finalPrice) {
+        this.finalPrice = finalPrice;
     }
 }

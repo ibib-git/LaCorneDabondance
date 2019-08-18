@@ -12,13 +12,13 @@ public class TraductionEntity {
     @Column (name = "id")
     private String label;
 
-    @JoinColumn(name="id", referencedColumnName="category")
+    @JoinColumn(name="category", referencedColumnName="id")
     @ManyToOne
-    private CategoryEntity categoryEntity;
+    private CategoryEntity category;
 
-    @JoinColumn (name ="id", referencedColumnName = "language")
+    @JoinColumn (name ="language", referencedColumnName = "id")
     @ManyToOne
-    private LanguageEntity languageEntity;
+    private LanguageEntity language;
 
     public TraductionEntity () {}
 
@@ -31,19 +31,19 @@ public class TraductionEntity {
         this.label = label;
     }
 
-    public CategoryEntity getCategoryEntity() {
-        return categoryEntity;
+    public CategoryEntity getCategory() {
+        return category;
     }
 
-    public void setCategoryEntity(CategoryEntity categoryEntity) {
-        this.categoryEntity = categoryEntity;
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
     }
 
-    public LanguageEntity getLanguageEntity() {
-        return languageEntity;
+    public LanguageEntity getLanguage() {
+        return language;
     }
 
-    public void setLanguageEntity(LanguageEntity languageEntity) {
-        this.languageEntity = languageEntity;
+    public void setLanguage(LanguageEntity language) {
+        this.language = language;
     }
 }

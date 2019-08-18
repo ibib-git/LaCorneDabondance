@@ -24,18 +24,17 @@
                     <th>Intitulé</th>
                     <th>Saison</th>
                     <th>Catégorie</th>
-                    <th>disponibilité</th>
+                    <th>Disponibilité</th>
                     <th>Variétés disponibles</th>
 
                 </tr>
 
 
                     <c:forEach items="${productsList}" var="product">
-                        <a style="cursor: pointer" href="<spring:url value='/products/detail/${product.getId()}'  />">
+
                             <tr>
                                 <td>${product.getName()}</td>
-                                <td>${product.getSeasonStart().get(Calendar.MONTH)}<br>${product.getSeasonEnd().get(Calendar.MONTH)}</td>
-                                <td>Fruits/légume à changer</td>
+                                <td>${product.getCategoryModel().getId()}</td>
                                 <td>
                                     <c:choose>
                                         <c:when test="${product.getQuantity() > 0}">oui</c:when>
@@ -43,8 +42,13 @@
                                 </c:choose>
                                 </td>
                                 <td>${product.getVariety()}</td>
+                                <td><a style="cursor: pointer" href="<spring:url value='/products/detail/${product.getId()}' />">
+                                    <button class="buttonNavBar">Detail</button>
+                                    </a>
+                                </td>
+
                             </tr>
-                        </a>
+
 
                     </c:forEach>
 
