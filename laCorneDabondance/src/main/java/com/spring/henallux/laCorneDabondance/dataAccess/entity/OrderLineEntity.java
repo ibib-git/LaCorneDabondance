@@ -12,7 +12,7 @@ public class OrderLineEntity {
     private Integer id;
 
     @Column (name = "price")
-    private Integer price;
+    private Double price;
 
     @Column (name = "linenumber")
     private Integer lineNumber;
@@ -38,11 +38,11 @@ public class OrderLineEntity {
         this.id = id;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

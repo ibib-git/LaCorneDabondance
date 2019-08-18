@@ -95,10 +95,10 @@
 
                 <div class="row">
                     <div class="col-25">
-                        <label for="login">Identifiant</label>
+                        <label for="user">Identifiant</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="login" name="login" placeholder="Votre identifiant.." required>
+                        <input type="text" id="user" name="user" placeholder="Votre identifiant.." required>
                     </div>
                 </div>
 

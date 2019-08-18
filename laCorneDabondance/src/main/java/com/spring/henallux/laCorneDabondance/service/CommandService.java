@@ -1,14 +1,13 @@
 package com.spring.henallux.laCorneDabondance.service;
 
 
+import com.spring.henallux.laCorneDabondance.dataAccess.dao.CommandDAO;
+import com.spring.henallux.laCorneDabondance.dataAccess.dao.OrderLineDAO;
 import com.spring.henallux.laCorneDabondance.dataAccess.dao.ProductsDAO;
-import com.spring.henallux.laCorneDabondance.model.MarketLineModel;
-import com.spring.henallux.laCorneDabondance.model.MarketModel;
-import com.spring.henallux.laCorneDabondance.model.ProductsModel;
+import com.spring.henallux.laCorneDabondance.dataAccess.dao.UserDAO;
+import com.spring.henallux.laCorneDabondance.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -16,28 +15,17 @@ import java.util.GregorianCalendar;
 public class CommandService {
 
     @Autowired
-    private ProductsDAO productsDAO;
+    private CommandDAO commandDAO;
+
+    @Autowired
+    private OrderLineDAO orderLineDAO;
 
     @Autowired
     private ProductsService productsService;
 
-    public MarketModel addOrderLineCommand (MarketModel market, ProductsModel product,Integer quantity,Integer price)
-    {
+    @Autowired
+    private UserDAO userDAO; // A changer
 
-        ArrayList<MarketLineModel> marketLineModels = new ArrayList<>();
-
-        MarketLineModel marketLineModel = new MarketLineModel();
-        marketLineModel.setQuantity(quantity);
-        marketLineModel.setProductsModel(product);
-
-        marketLineModels = market.getMarketLineModel();
-        marketLineModels.add(marketLineModel);
-
-        market.setMarketLineModel(marketLineModels);
-        market.setIdOrder(1);  // A modifier
-
-        return market;
-    }
 
     public Double calculPriceLineWithReduc (Integer quantity,ProductsModel product) {
 
@@ -57,7 +45,7 @@ public class CommandService {
         Double percentreduc = 0.0; // a remplacer par le percentage de la bd
         Double priceFinal = product.getCatalogPrice() ;
 /*
-
+ idée pour la fonction si temps
         if (((peremDate.get(Calendar.DAY_OF_YEAR) - 3) <= toDay.get(Calendar.DAY_OF_YEAR)) && (toDay.get(Calendar.DAY_OF_YEAR) < peremDate.get(Calendar.DAY_OF_YEAR)))
         {
             // calcul à partir de promotion
@@ -66,6 +54,35 @@ public class CommandService {
 */
 
         return priceFinal ;
+
+    }
+
+    public void saveMarket (MarketModel market)
+    {
+        CommandModel commandModel = new CommandModel();
+        OrderLineModel orderLineModel = new OrderLineModel();
+        GregorianCalendar toDay = new GregorianCalendar();
+        toDay.setTimeInMillis(System.currentTimeMillis());
+        toDay.set(Calendar.MONTH,toDay.get(Calendar.MONTH)+1); // Compenser le 0 à 11 du type
+
+        commandModel.setId(market.getIdOrder());
+        commandModel.setDate(toDay);
+        commandModel.setUserModel(userDAO.findUserByLogin("bibi"));  // A changer pour test
+
+        commandDAO.insertCommand(commandModel);
+
+        for (MarketLineModel marketLine: market.getMarketLineModel())
+        {
+            orderLineModel.setId(marketLine.getIdLine()); // A changer pour démarrer depuis la bd
+            orderLineModel.setOrderQuantity(marketLine.getQuantity());
+            orderLineModel.setPrice(marketLine.getFinalPrice());
+            orderLineModel.setLineNumber(marketLine.getIdLine());
+            orderLineModel.setProductsModel(marketLine.getProductsModel());
+            orderLineModel.setCommandModel(commandModel);
+
+            orderLineDAO.insertLineOrder(orderLineModel);
+        }
+
 
     }
 

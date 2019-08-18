@@ -42,19 +42,19 @@
 <div id="log" class="modal">
 
     <form class="modal-content animate">
-        <div class="img-login">
+        <div class="img-user">
             <span onclick="document.getElementById('log').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src='<spring:url value="/images/corn-in-fruta.png"/>' alt="logPicture" class="avatar">
         </div>
 
-        <div class="container-login">
+        <div class="container-user">
             <label><b>Identifiant</b></label>
-            <input type="text" class="login" placeholder="Entrer votre Identifiant" name="uname" required>
+            <input type="text" class="user" placeholder="Entrer votre Identifiant" name="uname" required>
 
             <label><b>Mot de passe</b></label>
-            <input type="password" class="login" placeholder="Entrer votre mot de passe" name="psw" required>
+            <input type="password" class="user" placeholder="Entrer votre mot de passe" name="psw" required>
 
-            <button class="button-login" type="submit">Valider</button>
+            <button class="button-user" type="submit">Valider</button>
             <a href="<spring:url value='/signUp'/>"><button class="button-register" type="button">Nouvelle inscription</button></a>
 
         </div>
@@ -72,7 +72,7 @@
 <div id="panier" class="modal">
 
     <form class="modal-content animate">
-        <div class="img-login">
+        <div class="img-user">
             <span onclick="document.getElementById('panier').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src='<spring:url value="/images/images-ico.ico"/>' alt="logPicture" class="avatar">
             <h3>Panier de la commande</h3>
@@ -86,7 +86,7 @@
             <th>Total (€)</th>
         </tr>
 
-        <div class="container-login">
+        <div class="container-user">
             <c:forEach items="${session.getMarketModel().getMarketLineModel()}" var="market">
                 <tr>
                     <td>${market.getProductsModel().getName()} </td>
@@ -108,7 +108,7 @@
 
 
         <div class="container" style="background-color:#f1f1f1">
-            <a href="<spring:url value='/command'/>"><button type="button" onclick="document.getElementById('panier').style.display='none'" class="button-login">Commander</button></a>
+            <a href="<spring:url value='/command'/>"><button type="button" onclick="document.getElementById('panier').style.display='none'" class="button-user">Commander</button></a>
             <button type="button" onclick="document.getElementById('panier').style.display='none'" class="cancelbtn">Annuler</button>
         </div>
     </form>
