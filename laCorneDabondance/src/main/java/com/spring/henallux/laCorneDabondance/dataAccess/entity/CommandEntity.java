@@ -18,7 +18,7 @@ public class CommandEntity {
     @Temporal(TemporalType.DATE)
     private Date dateCommand;
 
-    @JoinColumn (name = "user",referencedColumnName = "login")
+    @JoinColumn (name = "user",referencedColumnName = "username")
     @ManyToOne
     private UserEntity user;
 

@@ -21,11 +21,17 @@ public class UserDAO {
 
     public UserModel findUserByLogin (String login)
     {
-        UserEntity userEntity = new UserEntity();
-
-        userEntity = userRepository.findByLogin(login);
+        UserEntity userEntity = userRepository.findByLogin(login);
 
         return userConverter.userEntityToModel(userEntity);
+    }
+
+    public void insertUser (UserModel user)
+    {
+        UserEntity userEntity = userConverter.userModelToEntity(user);
+
+        userRepository.save(userEntity);
+
 
     }
 }

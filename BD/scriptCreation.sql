@@ -10,14 +10,18 @@ drop table promotion;
 drop table user;
 
 create table user (
-	login varchar(45) primary key not null,
+	username varchar(45) primary key not null,
     lastName varchar(45) not null,
     firstName varchar(45) not null,
     phone int not null,
     mail varchar(45) not null,
     adressPrivate varchar(45) not null,
     adressDelivery varchar(45) not null,
-    password varchar(45) not null,
+    password varchar(80) not null,
+    authorities varchar(45) not null,
+    non_expired boolean not null,
+    non_locked boolean not null,
+    credentials_non_expired boolean not null,
     enabled boolean not null)
     engine = InnoDB;
 
@@ -77,7 +81,7 @@ create table command (
 	id int primary key not null,
     dateCommand date not null,
     user varchar(45) not null,
-    constraint user_FK foreign key (user) references user (login))
+    constraint user_FK foreign key (user) references user (username))
     engine = InnoDB;
 
 create table orderLine (

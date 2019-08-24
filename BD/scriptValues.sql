@@ -1,4 +1,4 @@
-insert into user values ("bibi","Fricot","Damien",0494129873,"damien.fricot@hotmail.be","Rue du moulin 220 5600 Philippeville","Avenue Fernand Golenvaux 3 5000 Namur",'fricotin',true);
+insert into user values ("bibi","Fricot","Damien",0494129873,"damien.fricot@hotmail.be","Rue du moulin 220 5600 Philippeville","Avenue Fernand Golenvaux 3 5000 Namur",'fricotin',"admin",true,true,true,true);
 insert into category values (1),(2);
 insert into language values (1,"Francais"),(2,"English");
 insert into traduction values ("Fruits",1,1),("Légumes",1,2),("Fruit",2,1),("Vegetable",2,2);

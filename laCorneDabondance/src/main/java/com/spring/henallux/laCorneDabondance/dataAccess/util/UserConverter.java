@@ -11,7 +11,7 @@ public class UserConverter {
     {
         UserEntity userEntity = new UserEntity();
 
-        userEntity.setLogin(userModel.getUser());
+        userEntity.setUsername(userModel.getUser());
         userEntity.setFirstname(userModel.getFirstName());
         userEntity.setLastname(userModel.getLastName());
         userEntity.setAdressDelivery(userModel.getAdressDelivery());
@@ -19,9 +19,6 @@ public class UserConverter {
         userEntity.setMail(userModel.getMail());
         userEntity.setPhone(userModel.getPhone());
         userEntity.setPassword(userModel.getPassword());
-        userEntity.setNon_Locked(userModel.getNon_locked());
-        userEntity.setEnabled(userModel.getEnabled());
-        userEntity.setAuthorities(userModel.getAuthorities());
 
         return userEntity;
     }
@@ -30,17 +27,13 @@ public class UserConverter {
     {
         UserModel userModel = new UserModel();
 
-        userModel.setUser(userEntity.getLogin());
+        userModel.setUser(userEntity.getUsername());
         userModel.setFirstName(userEntity.getFirstname());
         userModel.setLastName(userEntity.getLastname());
         userModel.setAdressDelivery(userEntity.getAdressDelivery());
         userModel.setAdressPrivate(userEntity.getAdressPrivate());
         userModel.setMail(userEntity.getMail());
         userModel.setPhone(userEntity.getPhone());
-        userModel.setAuthorities(userEntity.getAuthorities());
-        userModel.setCredentials_non_expired(userEntity.getCredentials_non_expired());
-        userModel.setEnabled(userEntity.getEnabled());
-        userModel.setPassword(userEntity.getPassword());
 
         return userModel;
 

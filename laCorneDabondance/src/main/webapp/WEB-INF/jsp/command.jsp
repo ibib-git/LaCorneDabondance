@@ -24,7 +24,7 @@
                     <th>Total (€)</th>
                 </tr>
 
-                <div class="container-user">
+                <div class="container-login">
                     <c:forEach items="${session.getMarketModel().getMarketLineModel()}" var="market">
                         <tr>
                             <td>${market.getProductsModel().getName()} </td>

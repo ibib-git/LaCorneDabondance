@@ -26,7 +26,7 @@
                         <form:label path="lastName">Nom</form:label>
                     </div>
                     <div class="col-75">
-                        <form:input type="text" path="lastname" name="lastname" placeholder="Votre nom.." required="required" />
+                        <form:input type="text" path="lastName" name="lastname" placeholder="Votre nom.." required="required" />
                     </div>
                 </div>
                 <form:errors path="lastName" />
@@ -67,7 +67,7 @@
                         <form:label path="adressPrivate">Adresse</form:label>
                     </div>
                     <div class="col-75">
-                        <form:input type="text" path="adressPrivate" name="adressPrivate" placeholder="Votre adresse.." required="required"/>
+                        <form:input type="text" path="adressPrivate" name="adressPrivate" placeholder="Votre adresse.." />
                     </div>
                 </div>
                 <form:errors path="adressPrivate" />
@@ -110,7 +110,7 @@
 
 
             <div class="row">
-                    <form:button >Valider inscription</form:button>
+                <button class="buttonNavBar"><form:button >Valider inscription</form:button></button>
                 </div>
 
             </form:form>

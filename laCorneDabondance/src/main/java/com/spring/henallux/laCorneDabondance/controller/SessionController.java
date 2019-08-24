@@ -3,6 +3,7 @@ package com.spring.henallux.laCorneDabondance.controller;
 
 import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration;
 import com.spring.henallux.laCorneDabondance.model.SessionModel;
+import com.spring.henallux.laCorneDabondance.model.UserModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -16,5 +17,8 @@ public class SessionController {
     {
         return new SessionModel();
     }
+
+    @ModelAttribute (ConstantConfiguration.CURRENT_USER)
+    public UserModel User() {return new UserModel();}
 
 }

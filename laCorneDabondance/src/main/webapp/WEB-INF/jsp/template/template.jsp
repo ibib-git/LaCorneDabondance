@@ -35,26 +35,40 @@
     <li class="right"><a href="#frenchFlag"><img class="icon" src="<spring:url value='/images/french-flag.png'/>" alt="frenchFlag"/></a></li>
     <li class="right"><a href="#englishFlag"><img class="icon" src='<spring:url value="/images/english-flag.jpg"/>' alt="englishFlag"/></a></li>
     <li class="right"><a onclick="document.getElementById('panier').style.display='block'" style="width:auto;"><img class="icon" src='<spring:url value="/images/panier.png"/>' alt="shopIcon"></a></li>
-    <li class="right"><a><button onclick="document.getElementById('log').style.display='block'" style="width:auto;"  class="buttonNavBar">Inscription/Connexion</button></a></li>
+    <sec:authorize access="!isAuthenticated()">
+        <li class="right"><a><button onclick="document.getElementById('log').style.display='block'" style="width:auto;"  class="buttonNavBar">Inscription/Connexion</button></a></li>
+    </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
+        <li class="right"><a><img class="icon" src="<spring:url value='/images/person-icon.png'/>" alt="frenchFlag"/></a></li>
+    </sec:authorize>
+    <li class="search-container">
+        <a>
+            <form autocomplete="off">
+                <div class="autocomplete" style="width:300px;">
+                    <input id="mySearch" type="text" placeholder="Rechercher.." name="search">
+                </div>
+            </form>
+        </a>
+    </li>
 
 </ul>
 
 <div id="log" class="modal">
 
     <form class="modal-content animate">
-        <div class="img-user">
+        <div class="img-login">
             <span onclick="document.getElementById('log').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src='<spring:url value="/images/corn-in-fruta.png"/>' alt="logPicture" class="avatar">
         </div>
 
-        <div class="container-user">
+        <div class="container-login">
             <label><b>Identifiant</b></label>
-            <input type="text" class="user" placeholder="Entrer votre Identifiant" name="uname" required>
+            <input type="text" class="login" placeholder="Entrer votre Identifiant" name="uname" required>
 
             <label><b>Mot de passe</b></label>
-            <input type="password" class="user" placeholder="Entrer votre mot de passe" name="psw" required>
+            <input type="password" class="login" placeholder="Entrer votre mot de passe" name="psw" required>
 
-            <button class="button-user" type="submit">Valider</button>
+            <button class="button-login" type="submit">Valider</button>
             <a href="<spring:url value='/signUp'/>"><button class="button-register" type="button">Nouvelle inscription</button></a>
 
         </div>
@@ -63,6 +77,7 @@
 
         <div class="container" style="background-color:#f1f1f1">
             <button type="button" onclick="document.getElementById('log').style.display='none'" class="cancelbtn">Annuler</button>
+            <span class="psw"><a href="#">Mot de passe oublié ?</a></span>
         </div>
     </form>
 </div>
@@ -72,8 +87,8 @@
 <div id="panier" class="modal">
 
     <form class="modal-content animate">
-        <div class="img-user">
-            <span onclick="document.getElementById('panier').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <div class="img-login">
+            <span onclick="document.getElementById('panier').style.display='none'" class="close" title="Close Modal"></span>
             <img src='<spring:url value="/images/images-ico.ico"/>' alt="logPicture" class="avatar">
             <h3>Panier de la commande</h3>
         </div>
@@ -86,7 +101,7 @@
             <th>Total (€)</th>
         </tr>
 
-        <div class="container-user">
+        <div class="container-login">
             <c:forEach items="${session.getMarketModel().getMarketLineModel()}" var="market">
                 <tr>
                     <td>${market.getProductsModel().getName()} </td>
@@ -108,7 +123,7 @@
 
 
         <div class="container" style="background-color:#f1f1f1">
-            <a href="<spring:url value='/command'/>"><button type="button" onclick="document.getElementById('panier').style.display='none'" class="button-user">Commander</button></a>
+        <a href="<spring:url value='/command'/>"><button type="button" onclick="document.getElementById('panier').style.display='none'" class="button-login">Commander</button></a>
             <button type="button" onclick="document.getElementById('panier').style.display='none'" class="cancelbtn">Annuler</button>
         </div>
     </form>

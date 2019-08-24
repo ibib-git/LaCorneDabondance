@@ -25,6 +25,7 @@ public class OrderLineEntity {
     private ProductsEntity product;
 
     @JoinColumn (name = "command",referencedColumnName = "id")
+    @ManyToOne
     private CommandEntity command;
 
     public OrderLineEntity () {}

@@ -22,16 +22,12 @@
             <table>
                 <tr>
                     <th>Intitulé</th>
-                    <th>Saison</th>
                     <th>Catégorie</th>
                     <th>Disponibilité</th>
                     <th>Variétés disponibles</th>
 
                 </tr>
-
-
                     <c:forEach items="${productsList}" var="product">
-
                             <tr>
                                 <td>${product.getName()}</td>
                                 <td>${product.getCategoryModel().getId()}</td>

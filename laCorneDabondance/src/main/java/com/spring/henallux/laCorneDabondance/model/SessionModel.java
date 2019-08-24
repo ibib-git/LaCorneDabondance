@@ -7,7 +7,7 @@ public class SessionModel {
 
     private String currentPage = "home";
     private MarketModel marketModel = new MarketModel();
-    private Integer orderQuantity;   // A voir si on peut intégrer dans le path jusqu'à la quantity deline
+    private Integer orderQuantity;
     private ProductsModel productsModel;
 
     public String getCurrentPage() {
@@ -42,4 +42,5 @@ public class SessionModel {
     public void setProductsModel(ProductsModel productsModel) {
         this.productsModel = productsModel;
     }
+
 }
