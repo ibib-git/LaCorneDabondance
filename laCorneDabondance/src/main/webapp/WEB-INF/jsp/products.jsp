@@ -10,7 +10,7 @@
 <!--Container-->
 
 <div class="container-title">
-    <h1>Categorie</h1>
+    <h1><spring:message code="category"/></h1>
     <p><h2>${category}</h2></p>
 
     <div class="flex-container">

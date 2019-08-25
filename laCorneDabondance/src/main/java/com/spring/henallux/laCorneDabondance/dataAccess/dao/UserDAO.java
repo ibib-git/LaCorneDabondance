@@ -19,9 +19,9 @@ public class UserDAO {
     @Autowired
     private UserConverter userConverter;
 
-    public UserModel findUserByLogin (String login)
+    public UserModel findUserByLogin (String user)
     {
-        UserEntity userEntity = userRepository.findByLogin(login);
+        UserEntity userEntity = userRepository.findByUsername(user);
 
         return userConverter.userEntityToModel(userEntity);
     }

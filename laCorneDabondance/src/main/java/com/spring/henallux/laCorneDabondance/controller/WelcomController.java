@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 
@@ -28,8 +30,9 @@ public class WelcomController extends SessionController {
     private CategoryModel categoryModel;
 
     @RequestMapping (method = RequestMethod.GET)
-    public String home (Model model, @ModelAttribute (value = "session")SessionModel session){
+    public String home (Model model, @ModelAttribute (value = "session")SessionModel session, Locale locale){
 
+        setMessageSource(session,model,locale,"home");
 
         Random random = new Random();
         productsListing = productsService.getSeasonProducts();
@@ -64,12 +67,12 @@ public class WelcomController extends SessionController {
         model.addAttribute("welcomLegumeImage",welcomLegume.getPhotoLink());
         model.addAttribute("welcomLegumeDescription",welcomLegume.getDescription());
         model.addAttribute("welcomLegumeId",welcomLegume.getId());
-        model.addAttribute("title","La Corne d'Abondance");
 
 
 
         productsAllList = productsService.getAllProducts();
         model.addAttribute("productsList",productsAllList);
+
 
         return "integrated:welcom";
 
@@ -78,7 +81,7 @@ public class WelcomController extends SessionController {
 
 
     @RequestMapping(value ="/contact",method = RequestMethod.GET)
-    public String contact (Model model, @ModelAttribute (value = "session")SessionModel session) {
+    public String contact (Model model, @ModelAttribute (value = "session")SessionModel session, Locale locale) {
 
         model.addAttribute("title","Contact");
         return "integrated:contact";

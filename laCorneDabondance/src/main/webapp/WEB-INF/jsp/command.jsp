@@ -9,7 +9,7 @@
 <body>
 
 <div class="container-title">
-    <h2>Commande</h2>
+    <h2><spring:message code="command"/></h2>
 
 
     <div class="flex-container">
@@ -18,10 +18,10 @@
             <table>
 
                 <tr>
-                    <th>Nom du produit</th>
-                    <th>Prix unitaire avec réduction (€)</th>
-                    <th>Quantité</th>
-                    <th>Total (€)</th>
+                    <th><spring:message code="nameProduct"/></th>
+                    <th><spring:message code="priceReduc"/></th>
+                    <th><spring:message code="quantity"/></th>
+                    <th><spring:message code="total"/></th>
                 </tr>
 
                 <div class="container-login">
@@ -37,9 +37,9 @@
                 </div>
             </table>
 
-            <h4> TOTAL : ${totalCommand} €</h4>
+            <h4> <spring:message code="totalCommand"/> ${totalCommand}</h4>
                 <h3>Doit vérifier si log avant</h3>
-            <a href="<spring:url value='/command/toPay'/>"><button class="buttonNavBar" type="button">Confirmer et payer</button></a>
+            <a href="<spring:url value='/command/toPay'/>"><button class="buttonNavBar" type="button"><spring:message code="confirmAndPay"/></button></a>
 
 
         </div>

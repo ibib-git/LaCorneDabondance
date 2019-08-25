@@ -9,7 +9,7 @@
 <body>
 
 <div class="container-title">
-    <h2>Payement</h2>
+    <h2><spring:message code="paye"/></h2>
 
 
 
@@ -17,8 +17,8 @@
 
         <div>
 
-            <h4>Commande numéro : ${session.getMarketModel().getIdOrder()}</h4>
-            <h5>Montant : ${totalCommand} €</h5>
+            <h4><spring:message code="numberCommand"/>${session.getMarketModel().getIdOrder()}</h4>
+            <h5><spring:message code="totalCommand"/>${totalCommand} €</h5>
 
         </div>
         <div>

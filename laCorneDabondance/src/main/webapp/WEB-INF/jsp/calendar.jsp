@@ -9,7 +9,7 @@
 <body>
 
 <div class="container-title">
-    <h2>Calendrier</h2>
+    <h2><spring:message code="calendar"/></h2>
 
 
 
@@ -21,10 +21,10 @@
         <div class="test-table">
             <table>
                 <tr>
-                    <th>Intitulé</th>
-                    <th>Catégorie</th>
-                    <th>Disponibilité</th>
-                    <th>Variétés disponibles</th>
+                    <th><spring:message code="intitl"/></th>
+                    <th><spring:message code="category"/></th>
+                    <th><spring:message code="disponibility"/></th>
+                    <th><spring:message code="variety"/></th>
 
                 </tr>
                     <c:forEach items="${productsList}" var="product">
@@ -33,22 +33,17 @@
                                 <td>${product.getCategoryModel().getId()}</td>
                                 <td>
                                     <c:choose>
-                                        <c:when test="${product.getQuantity() > 0}">oui</c:when>
-                                    <c:otherwise>non</c:otherwise>
+                                        <c:when test="${product.getQuantity() > 0}"><spring:message code="yes"/></c:when>
+                                    <c:otherwise><spring:message code="no"/></c:otherwise>
                                 </c:choose>
                                 </td>
                                 <td>${product.getVariety()}</td>
                                 <td><a style="cursor: pointer" href="<spring:url value='/products/detail/${product.getId()}' />">
-                                    <button class="buttonNavBar">Detail</button>
+                                    <button class="buttonNavBar"><spring:message code="detail"/></button>
                                     </a>
                                 </td>
-
                             </tr>
-
-
                     </c:forEach>
-
-
             </table>
         </div>
     </div>

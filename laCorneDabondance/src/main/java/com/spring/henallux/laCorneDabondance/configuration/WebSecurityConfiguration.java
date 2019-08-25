@@ -6,15 +6,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private static final String LOGIN_REQUEST = "/login";
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/"};
+    private static final String LOGIN_REQUEST = "/home";
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]
+            {"/home/*", "/products/*", "/signUp/*","/signUp","/command","/command/*", "/css/*", "/images/*", "/products/*/*"
+            };
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
 
     private UserDetailsService userDetailsServiceImpl;
@@ -56,6 +58,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(new Pbkdf2PasswordEncoder());
     }
 }

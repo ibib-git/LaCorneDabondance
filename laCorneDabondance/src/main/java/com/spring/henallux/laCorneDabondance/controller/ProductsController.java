@@ -4,6 +4,7 @@ import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration
 import com.spring.henallux.laCorneDabondance.model.MarketLineModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import com.spring.henallux.laCorneDabondance.model.SessionModel;
+import com.spring.henallux.laCorneDabondance.model.UserModel;
 import com.spring.henallux.laCorneDabondance.service.CommandService;
 import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 @Controller
 @RequestMapping (value = "/products")
 @SessionAttributes({ConstantConfiguration.SESSION,ConstantConfiguration.CURRENT_USER})
-public class ProductsController {
+public class ProductsController extends SessionController {
 
 
     @Autowired
@@ -24,8 +26,15 @@ public class ProductsController {
     private ProductsModel productDetail;
     private CommandService commandService;
 
+    @RequestMapping(method = RequestMethod.GET)
+    public void productMenu (Model model, @ModelAttribute(value = "session") SessionModel session, @ModelAttribute (value = "user") UserModel user, Locale locale)
+    {
+        setMessageSource(session,model,locale,"products");
+
+    }
+
     @RequestMapping(value = "/fruits",method = RequestMethod.GET)
-    public String fruits (Model model,@ModelAttribute(value = "session") SessionModel session) {
+    public String fruits (Model model,@ModelAttribute(value = "session") SessionModel session, Locale locale) {
         int id = 1;
         ArrayList<ProductsModel> fruitsListing = new ArrayList<>();
         fruitsListing = productsService.getAllProductsByCategory(1);
@@ -39,7 +48,7 @@ public class ProductsController {
     }
 
     @RequestMapping(value = "/legumes",method = RequestMethod.GET)
-    public String legumes (Model model,@ModelAttribute (value = "session")SessionModel session)
+    public String legumes (Model model,@ModelAttribute (value = "session")SessionModel session, Locale locale)
     {
         ArrayList<ProductsModel> legumesListing = new ArrayList<>();
         legumesListing = productsService.getAllProductsByCategory(2);
@@ -56,7 +65,7 @@ public class ProductsController {
 
 
     @RequestMapping (value = "/detail/{productId}",method = RequestMethod.GET)
-    public String detailProduct (Model model, @PathVariable int productId,@ModelAttribute (value = "session")SessionModel session)
+    public String detailProduct (Model model, @PathVariable int productId,@ModelAttribute (value = "session")SessionModel session, Locale locale)
     {
         productDetail =productsService.getProduct(productId);
 
@@ -103,13 +112,13 @@ public class ProductsController {
     }
 
     @RequestMapping (value = "/return",method = RequestMethod.POST)
-    public String returnButton (Model model,@ModelAttribute (value = "session")SessionModel session)
+    public String returnButton (Model model,@ModelAttribute (value = "session")SessionModel session, Locale locale)
     {
         return  "redirect:/"+session.getCurrentPage();
     }
 
     @RequestMapping (value = "/addProduct",method = RequestMethod.POST)
-    public String addChoiceMarket (Model model,@ModelAttribute (value = "session")SessionModel session)
+    public String addChoiceMarket (Model model,@ModelAttribute (value = "session")SessionModel session, Locale locale)
     {
         MarketLineModel marketLine = new MarketLineModel();
         ArrayList<MarketLineModel> marketLines = new ArrayList<>();
@@ -147,7 +156,7 @@ public class ProductsController {
     }
 
     @RequestMapping (value = "deleteProduct/{idLine}",method = RequestMethod.GET)
-    public String deleteChoiceMarket (Model model,@PathVariable int idLine,@ModelAttribute (value = "session")SessionModel session)
+    public String deleteChoiceMarket (Model model,@PathVariable int idLine,@ModelAttribute (value = "session")SessionModel session, Locale locale)
     {
         ArrayList<MarketLineModel> marketLines =  session.getMarketModel().getMarketLineModel();
 
@@ -165,7 +174,7 @@ public class ProductsController {
     }
 
     @RequestMapping (value = "updateProduct/{idLine}",method = RequestMethod.GET)
-    public String updateChoiceMarket (Model model,@PathVariable int idLine,@ModelAttribute (value = "session")SessionModel session)
+    public String updateChoiceMarket (Model model,@PathVariable int idLine,@ModelAttribute (value = "session")SessionModel session, Locale locale)
     {
         ArrayList<MarketLineModel> marketLines =  session.getMarketModel().getMarketLineModel();
         MarketLineModel marketLineModel = marketLines.get(idLine);
@@ -176,7 +185,7 @@ public class ProductsController {
     }
 
     @RequestMapping (value = "/updateQuantProduct/{idLineUpdate}",method = RequestMethod.POST)
-    public String updateQuantChoiceMarket (Model model,@PathVariable int idLineUpdate,@ModelAttribute (value = "session")SessionModel session)
+    public String updateQuantChoiceMarket (Model model,@PathVariable int idLineUpdate,@ModelAttribute (value = "session")SessionModel session, Locale locale)
     {
         MarketLineModel marketLine = new MarketLineModel();
         ArrayList<MarketLineModel> marketLines = new ArrayList<>();
@@ -196,7 +205,7 @@ public class ProductsController {
     }
 
     @RequestMapping(value = "/calendar",method = RequestMethod.GET)
-    public String calendar (Model model,@ModelAttribute (value = "session")SessionModel session){
+    public String calendar (Model model,@ModelAttribute (value = "session")SessionModel session, Locale locale){
 
         ArrayList<ProductsModel> productsList = new ArrayList<>();
         productsList = productsService.getAllProducts();

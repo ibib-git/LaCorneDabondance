@@ -8,8 +8,8 @@
 </head>
 <body>
 <div class="container-title">
-    <h1>Accueil</h1>
-    <p><h2>Produits du moment</h2></p>
+    <h1><spring:message code="home"/></h1>
+    <p><h2><spring:message code="productMo"/></h2></p>
 
     <div class="flex-container">
         <a href="<spring:url value='/products/detail/${welcomFruitsId}'  />">

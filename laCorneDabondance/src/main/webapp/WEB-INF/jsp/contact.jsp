@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container-title">
-    <h2>Contact</h2>
+    <h2><spring:message code="contact"/></h2>
 
 
 

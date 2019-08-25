@@ -1,14 +1,14 @@
 package com.spring.henallux.laCorneDabondance.dataAccess.entity;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import com.spring.henallux.laCorneDabondance.dataAccess.util.Role;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import static org.springframework.util.StringUtils.isEmpty;
 
 @Entity(name="PERSISTABLE_USER")
+@Table (name = "user")
 public class UserEntity implements UserDetails {
 
     @Id
@@ -19,19 +19,19 @@ public class UserEntity implements UserDetails {
     private String password;
 
     @Column(name = "AUTHORITIES")
-    private String authorities;
+    private String authorities = "";
 
     @Column(name = "NON_EXPIRED")
-    private Boolean accountNonExpired;
+    private Boolean accountNonExpired = true;
 
     @Column(name = "NON_LOCKED")
-    private Boolean accountNonLocked;
+    private Boolean accountNonLocked = true;
 
     @Column(name = "CREDENTIALS_NON_EXPIRED")
-    private Boolean credentialsNonExpired;
+    private Boolean credentialsNonExpired = true;
 
     @Column(name = "ENABLED")
-    private Boolean enabled;
+    private Boolean enabled = true;
 
     @Column (name = "lastname")
     private String lastname;
@@ -58,20 +58,14 @@ public class UserEntity implements UserDetails {
 
 
     @Override
-    public Collection<GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+    public ArrayList<Role> getAuthorities() {
+        String[] authoritiesArray = this.authorities.split(",");
+        ArrayList<Role> authoritiesCollection = new ArrayList<Role>();
 
-        if(!isEmpty(authorities)) {
-            String[] authoritiesAsArray = authorities.split(",");
-
-            for(String authority : authoritiesAsArray) {
-                if(!isEmpty(authority)) {
-                    grantedAuthorities.add(new SimpleGrantedAuthority(authority));
-                }
-            }
+        for(String role : authoritiesArray){
+            authoritiesCollection.add(new Role(role));
         }
-
-        return grantedAuthorities;
+        return authoritiesCollection;
     }
 
     @Override

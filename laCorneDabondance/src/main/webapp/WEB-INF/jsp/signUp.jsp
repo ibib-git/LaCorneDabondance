@@ -110,7 +110,7 @@
 
 
             <div class="row">
-                <button class="buttonNavBar"><form:button >Valider inscription</form:button></button>
+                <form:button >Valider inscription</form:button>
                 </div>
 
             </form:form>

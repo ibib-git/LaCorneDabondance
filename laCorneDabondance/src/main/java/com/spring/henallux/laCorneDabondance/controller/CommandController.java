@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.util.Locale;
+
 @Controller
 @RequestMapping (value = "/command")
 @SessionAttributes({ConstantConfiguration.SESSION,ConstantConfiguration.CURRENT_USER})
@@ -22,7 +24,9 @@ public class CommandController extends SessionController {
 
 
     @RequestMapping (method = RequestMethod.GET)
-    public String command (Model model, @ModelAttribute(value = "session") SessionModel session){
+    public String command (Model model, @ModelAttribute(value = "session") SessionModel session, Locale locale){
+
+        setMessageSource(session,model,locale,"toCommand");
 
         // Vérifier si le client est identifié
 
@@ -43,7 +47,7 @@ public class CommandController extends SessionController {
     }
 
     @RequestMapping (value = "/toPay",method = RequestMethod.GET)
-    public String toPay (Model model, @ModelAttribute(value = "session") SessionModel session){
+    public String toPay (Model model, @ModelAttribute(value = "session") SessionModel session, Locale locale){
 
         commandService.saveMarket(session.getMarketModel());
         commandService.updateQuantity(session.getMarketModel());
