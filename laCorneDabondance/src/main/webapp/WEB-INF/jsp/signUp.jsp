@@ -2,7 +2,6 @@
 <%@include file="include/importTags.jsp" %>
 <%@page contentType="text/html; charset=UTF-8" %>
 
-<html lang="fr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 </head>
@@ -112,6 +111,7 @@
             <div class="row">
                 <form:button >Valider inscription</form:button>
                 </div>
+
 
             </form:form>
 

@@ -1,10 +1,13 @@
 package com.spring.henallux.laCorneDabondance.controller;
 
 import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration;
+import com.spring.henallux.laCorneDabondance.dataAccess.entity.UserEntity;
 import com.spring.henallux.laCorneDabondance.model.MarketLineModel;
 import com.spring.henallux.laCorneDabondance.model.SessionModel;
+import com.spring.henallux.laCorneDabondance.model.UserModel;
 import com.spring.henallux.laCorneDabondance.service.CommandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,7 +29,7 @@ public class CommandController extends SessionController {
     @RequestMapping (method = RequestMethod.GET)
     public String command (Model model, @ModelAttribute(value = "session") SessionModel session, Locale locale){
 
-        setMessageSource(session,model,locale,"toCommand");
+        setMessageSource(session,model,locale,"command");
 
         // Vérifier si le client est identifié
 
@@ -42,14 +45,18 @@ public class CommandController extends SessionController {
 
         }
         model.addAttribute("totalCommand",totalCommand);
+        model.addAttribute("userEntity",new UserEntity());
+
 
         return "integrated:command";
     }
 
     @RequestMapping (value = "/toPay",method = RequestMethod.GET)
-    public String toPay (Model model, @ModelAttribute(value = "session") SessionModel session, Locale locale){
+    public String toPay (Model model, @ModelAttribute(value = "session") SessionModel session, Locale locale, Authentication authentication){
 
-        commandService.saveMarket(session.getMarketModel());
+        UserEntity userEntity = (UserEntity)authentication.getPrincipal();
+
+        commandService.saveMarket(session.getMarketModel(),userEntity);
         commandService.updateQuantity(session.getMarketModel());
 
         // Normalement redirigé vers payement Paypal

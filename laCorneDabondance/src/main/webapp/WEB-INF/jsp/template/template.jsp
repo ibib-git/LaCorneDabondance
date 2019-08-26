@@ -3,7 +3,6 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 
 <!DOCTYPE html>
-<html lang="fr">
 
 <head>
     <title>${title}</title>
@@ -17,7 +16,7 @@
 <body>
 <!-- Header -->
 <div class="header" style="background-image: url('<spring:url value="/images/Corne-dAbondance.jpg"/>')";>
-    <h1><spring:message code="siteName"/></h1>
+    <h1>La Corne d'Abondance</h1>
     <p><spring:message code="topHome"/></p>
 </div>
 
@@ -27,13 +26,19 @@
     <li class="dropdown">
         <a href="#category"><spring:message code="category"/></a>
         <div class="dropdown-content">
-            <a href="<spring:url value='/products/fruits'/>">Fruits</a>
-            <a href="<spring:url value='/products/legumes'/>">Légumes</a>
+            <a href="<spring:url value='/products/fruits'/>"><spring:message code="fruit"/></a>
+            <a href="<spring:url value='/products/legumes'/>"><spring:message code="vegetable"/></a>
         </div></li>
     <li><a href="<spring:url value='/products/calendar'/>"><spring:message code="calendar"/></a></li>
     <li><a href="<spring:url value='/home/contact'/>"><spring:message code="contact"/></a></li>
-    <li class="right"><a href="#frenchFlag"><img class="icon" src="<spring:url value='/images/french-flag.png'/>" alt="frenchFlag"/></a></li>
-    <li class="right"><a href="#englishFlag"><img class="icon" src='<spring:url value="/images/english-flag.jpg"/>' alt="englishFlag"/></a></li>
+    <spring:url var="localeFr" value="">
+        <spring:param name="locale" value="fr"/>
+    </spring:url>
+    <spring:url var="localeEn" value="">
+        <spring:param name="locale" value="en"/>
+    </spring:url>
+    <li class="right"><a href="${localeFr}" class="language-select"><img class="icon" src="<spring:url value='/images/french-flag.png'/>" alt="frenchFlag"/></a></li>
+    <li class="right"><a href="${localeEn}" class="language-select"><img class="icon" src='<spring:url value="/images/english-flag.jpg"/>' alt="englishFlag"/></a></li>
     <li class="right"><a onclick="document.getElementById('panier').style.display='block'" style="width:auto;"><img class="icon" src='<spring:url value="/images/panier.png"/>' alt="shopIcon"></a></li>
     <sec:authorize access="!isAuthenticated()">
         <li class="right"><a><button onclick="document.getElementById('log').style.display='block'" style="width:auto;"  class="buttonNavBar"><spring:message code="login-button"/></button></a></li>
@@ -54,7 +59,7 @@
         </div>
 
         <div class="container-login">
-            <form:form action="/laCorneDabondance/signUp/login" id="login" method="post">
+            <form:form action="/laCorneDabondance/signUp/login" id="login" method="post" modelAttribute="userEntity">
 
                 <form:label path="username"><b><spring:message code="username"/></b></form:label>
             <form:input path="username" type="text" class="login" placeholder="Entrer votre Identifiant" name="uname" required="required" />

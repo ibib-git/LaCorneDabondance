@@ -1,9 +1,8 @@
 package com.spring.henallux.laCorneDabondance.controller;
 
 import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration;
-import com.spring.henallux.laCorneDabondance.model.CategoryModel;
-import com.spring.henallux.laCorneDabondance.model.ProductsModel;
-import com.spring.henallux.laCorneDabondance.model.SessionModel;
+import com.spring.henallux.laCorneDabondance.dataAccess.entity.UserEntity;
+import com.spring.henallux.laCorneDabondance.model.*;
 import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,8 +25,12 @@ public class WelcomController extends SessionController {
     @Autowired
     private ProductsService productsService;
     private ArrayList<ProductsModel> productsListing,productsAllList;
+    private ArrayList<CategoryModel> categoryModels;
     private ProductsModel welcomFruit,welcomLegume;
     private CategoryModel categoryModel;
+    private LanguageModel languageModel;
+    private ArrayList<TraductionModel> traductionModels;
+    private TraductionModel traductionModel;
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model, @ModelAttribute (value = "session")SessionModel session, Locale locale){
@@ -72,8 +75,17 @@ public class WelcomController extends SessionController {
 
         productsAllList = productsService.getAllProducts();
         model.addAttribute("productsList",productsAllList);
+        model.addAttribute("userEntity",new UserEntity());
+/*
+        languageModel = productsService.getLanguage(locale.toString());
+        ArrayList<CategoryModel> categoryList = productsService.getAllCategory();
+        for (CategoryModel category: categoryList)
+        {
+            traductionModels.add(productsService.getLabelTraduction(category.getId(),languageModel.getId()));
+        }
 
-
+        model.addAttribute("categoryList",traductionModels);
+*/
         return "integrated:welcom";
 
     }
@@ -82,8 +94,7 @@ public class WelcomController extends SessionController {
 
     @RequestMapping(value ="/contact",method = RequestMethod.GET)
     public String contact (Model model, @ModelAttribute (value = "session")SessionModel session, Locale locale) {
-
-        model.addAttribute("title","Contact");
+        model.addAttribute("userEntity",new UserEntity());
         return "integrated:contact";
     }
 

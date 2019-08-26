@@ -1,19 +1,20 @@
 package com.spring.henallux.laCorneDabondance.dataAccess.dao;
 
+import com.spring.henallux.laCorneDabondance.dataAccess.entity.LanguageEntity;
 import com.spring.henallux.laCorneDabondance.dataAccess.entity.ProductsEntity;
 import com.spring.henallux.laCorneDabondance.dataAccess.entity.TraductionEntity;
 import com.spring.henallux.laCorneDabondance.dataAccess.repository.CategoryRepository;
+import com.spring.henallux.laCorneDabondance.dataAccess.repository.LanguageRepository;
 import com.spring.henallux.laCorneDabondance.dataAccess.repository.ProductsRepository;
 import com.spring.henallux.laCorneDabondance.dataAccess.repository.TraductionRepository;
 import com.spring.henallux.laCorneDabondance.dataAccess.util.ProductsConverter;
 import com.spring.henallux.laCorneDabondance.dataAccess.util.TraductionConverter;
-import com.spring.henallux.laCorneDabondance.model.CategoryModel;
 import com.spring.henallux.laCorneDabondance.model.LanguageModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import com.spring.henallux.laCorneDabondance.model.TraductionModel;
-import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,14 +28,18 @@ public class ProductsDAO {
     private ProductsRepository productsRepository;
     private CategoryRepository categoryRepository;
     private TraductionRepository traductionRepository;
+    private LanguageRepository languageRepository;
     private ProductsConverter productsConverter;
     private TraductionConverter traductionConverter;
 
     @Autowired
-    public ProductsDAO (ProductsRepository productsRepository,CategoryRepository categoryRepository,ProductsConverter productsConverter){
+    public ProductsDAO (ProductsRepository productsRepository,CategoryRepository categoryRepository,LanguageRepository languageRepository,TraductionRepository traductionRepository,ProductsConverter productsConverter,TraductionConverter traductionConverter){
         this.productsRepository = productsRepository;
         this.productsConverter = productsConverter;
         this.categoryRepository = categoryRepository;
+        this.languageRepository = languageRepository;
+        this.traductionRepository = traductionRepository;
+        this.traductionConverter = traductionConverter;
     }
 
     public ProductsModel save (ProductsModel productsModel){
@@ -99,7 +104,17 @@ public class ProductsDAO {
         return productsModels;
     }
 
-    /*
+
+    public LanguageModel getLanguage (String code)
+    {
+        LanguageEntity languageEntity = languageRepository.findByLabel(code);
+
+        LanguageModel languageModel = traductionConverter.languageEntityToModel(languageEntity);
+
+        return languageModel;
+    }
+
+
     public TraductionModel getLabelTraduction (Integer category,Integer language)
     {
         TraductionEntity traductionEntity = traductionRepository.findByCategoryAndLanguage(category,language);
@@ -108,5 +123,19 @@ public class ProductsDAO {
 
         return label;
     }
-    */
+/*
+    public ArrayList<CategoryModel> getAllCategory ()
+    {
+        ArrayList<CategoryEntity> categoryEntities = categoryRepository.findAll();
+        ArrayList<CategoryModel> categoryModels = new ArrayList<>();
+        for (CategoryEntity entity : categoryEntities)
+        {
+            CategoryModel categoryModel = productsConverter.categoryEntityToModel(entity);
+            categoryModels.add(categoryModel);
+        }
+
+        return categoryModels;
+
+    }
+*/
 }

@@ -1,4 +1,5 @@
 package com.spring.henallux.laCorneDabondance.configuration;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,7 +16,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/home";
     private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]
-            {"/home/*", "/products/*", "/signUp/*","/signUp","/command","/command/*", "/css/*", "/images/*", "/products/*/*"
+            {"/home/*","/products/*","/signUp/*","/signUp","/command","/command/*", "/css/*", "/images/*","/products/*/*"
             };
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
 
@@ -25,10 +26,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public WebSecurityConfiguration(UserDetailsService userDetailsServiceImpl) {
         this.userDetailsServiceImpl = userDetailsServiceImpl;
     }
-
-    /**
-     * We do the configuration of spring security here.
-     */
 
 
     @Override
@@ -52,12 +49,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll(); // To make the logout the available for any user
     }
 
-    /**
-     * We provide the service which will return the user and the password encoder
-     * The service which is created here need to implement an interface provided by spring security. See @UserDetailsServiceImpl
-     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(new Pbkdf2PasswordEncoder());
     }
+
 }

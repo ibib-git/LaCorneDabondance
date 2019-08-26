@@ -1,16 +1,17 @@
 package com.spring.henallux.laCorneDabondance.controller;
 
 import com.spring.henallux.laCorneDabondance.configuration.ConstantConfiguration;
+import com.spring.henallux.laCorneDabondance.dataAccess.entity.UserEntity;
 import com.spring.henallux.laCorneDabondance.model.MarketLineModel;
 import com.spring.henallux.laCorneDabondance.model.ProductsModel;
 import com.spring.henallux.laCorneDabondance.model.SessionModel;
-import com.spring.henallux.laCorneDabondance.model.UserModel;
 import com.spring.henallux.laCorneDabondance.service.CommandService;
 import com.spring.henallux.laCorneDabondance.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
@@ -27,14 +28,36 @@ public class ProductsController extends SessionController {
     private CommandService commandService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public void productMenu (Model model, @ModelAttribute(value = "session") SessionModel session, @ModelAttribute (value = "user") UserModel user, Locale locale)
+    public void productMenu (Model model, @ModelAttribute(value = "session") SessionModel session, Locale locale)
     {
         setMessageSource(session,model,locale,"products");
+        model.addAttribute("userEntity",new UserEntity());
+
 
     }
 
+/*
+    @RequestMapping(value = "/{catId}",method = RequestMethod.GET)
+    public String legumes (Model model,@PathVariable int catId,@ModelAttribute (value = "session")SessionModel session, Locale locale)
+    {
+        ArrayList<ProductsModel> productsListing = productsService.getAllProductsByCategory(catId);
+
+        model.addAttribute("productsListing",productsListing);
+
+        model.addAttribute("productsListing",productsListing);
+        LanguageModel languageModel = productsService.getLanguage(locale.toString());
+        model.addAttribute("title",productsService.getLabelTraduction(catId,languageModel.getId()));
+
+        session.setCurrentPage("products/legumes");
+        model.addAttribute("userEntity",new UserEntity());
+
+        return "integrated:products";
+    }
+
+*/
+
     @RequestMapping(value = "/fruits",method = RequestMethod.GET)
-    public String fruits (Model model,@ModelAttribute(value = "session") SessionModel session, Locale locale) {
+    public String fruits (Model model,@ModelAttribute(value = "session") SessionModel session) {
         int id = 1;
         ArrayList<ProductsModel> fruitsListing = new ArrayList<>();
         fruitsListing = productsService.getAllProductsByCategory(1);
@@ -43,12 +66,14 @@ public class ProductsController extends SessionController {
         model.addAttribute("title","Fruits");
 
         session.setCurrentPage("products/fruits");
+        model.addAttribute("userEntity",new UserEntity());
+
 
         return "integrated:products";
     }
 
     @RequestMapping(value = "/legumes",method = RequestMethod.GET)
-    public String legumes (Model model,@ModelAttribute (value = "session")SessionModel session, Locale locale)
+    public String legumes (Model model,@ModelAttribute (value = "session")SessionModel session)
     {
         ArrayList<ProductsModel> legumesListing = new ArrayList<>();
         legumesListing = productsService.getAllProductsByCategory(2);
@@ -59,6 +84,8 @@ public class ProductsController extends SessionController {
         model.addAttribute("title","Légumes");
 
         session.setCurrentPage("products/legumes");
+        model.addAttribute("userEntity",new UserEntity());
+
         return "integrated:products";
     }
 
@@ -108,6 +135,7 @@ public class ProductsController extends SessionController {
         model.addAttribute("defaultValue",defaultValue);
 
         model.addAttribute("title",productDetail.getName());
+        model.addAttribute("userEntity",new UserEntity());
         return "integrated:productDetail";
     }
 
@@ -169,6 +197,8 @@ public class ProductsController extends SessionController {
         }
 
         session.getMarketModel().setMarketLineModel(marketLines);
+        model.addAttribute("userEntity",new UserEntity());
+
 
         return  "redirect:/"+session.getCurrentPage();
     }
@@ -180,6 +210,8 @@ public class ProductsController extends SessionController {
         MarketLineModel marketLineModel = marketLines.get(idLine);
 
         Integer idProduct = marketLineModel.getProductsModel().getId();
+        model.addAttribute("userEntity",new UserEntity());
+
 
         return  "redirect:/products/detail/"+idProduct;
     }
@@ -211,7 +243,8 @@ public class ProductsController extends SessionController {
         productsList = productsService.getAllProducts();
 
         model.addAttribute("productsList",productsList);
-         model.addAttribute("title","Calendrier");
+        model.addAttribute("userEntity",new UserEntity());
+
         return "integrated:calendar";
     }
 }

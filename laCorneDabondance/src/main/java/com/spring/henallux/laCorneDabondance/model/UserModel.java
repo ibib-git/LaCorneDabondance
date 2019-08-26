@@ -2,6 +2,8 @@ package com.spring.henallux.laCorneDabondance.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.Pattern;
+
 public class UserModel {
 
     @NotEmpty
@@ -11,15 +13,16 @@ public class UserModel {
     @NotEmpty
     private String firstName;
     @NotEmpty
-   // @Pattern(regexp="(^$|[0-9]{10})", message="{validation.phone}")
+    @Pattern(regexp="(^$|[0-9]{10})", message="{validation.phone}")
     private Integer phone;
     @NotEmpty
+    @Pattern(regexp="^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$", message="{validation.mail}")
     private String mail;
     private String adressPrivate;
     @NotEmpty
     private String adressDelivery;
     @NotEmpty
-    //@Pattern(regexp="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message="{validation.password}")
+    @Pattern(regexp="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message="{validation.password}")
     private String password;
     private String authorities;
     private Boolean non_expired;

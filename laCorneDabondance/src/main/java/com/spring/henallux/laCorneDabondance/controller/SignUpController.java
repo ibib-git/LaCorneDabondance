@@ -29,6 +29,7 @@ public class SignUpController extends SessionController {
     public String register (Model model, @ModelAttribute(value = "session") SessionModel session,@ModelAttribute (value = "user")UserModel user, Locale locale)
     {
         setMessageSource(session,model,locale,"signUp");
+        model.addAttribute("userEntity",new UserEntity());
 
         return "integrated:signUp";
     }
@@ -36,20 +37,12 @@ public class SignUpController extends SessionController {
     @RequestMapping (value = "/newUser",method = RequestMethod.POST)
     public String addNewUser (Model model,@ModelAttribute(value = "session") SessionModel session,@ModelAttribute (value = "user")UserModel user, Locale locale)
     {
+            // Tester si existe déja
 
-
-        if (userService.findUserByLogin(user.getUser()) != null)
-        {
-           // Message d'erreur
-            return  "redirect:/home";
-
-
-        } else
-        {
             userService.insertUser(user);
             return  "redirect:/home";
 
-        }
+
 
 
     }
@@ -58,7 +51,6 @@ public class SignUpController extends SessionController {
     public String login ( Model model,@ModelAttribute(value="session")SessionModel session,@ModelAttribute (value = "user")UserModel user, Authentication authentication, Locale locale)
     {
         UserEntity userEntity = (UserEntity)authentication.getPrincipal();
-        System.out.println(userEntity.getFirstname());
         return  "redirect:/home";
 
     }

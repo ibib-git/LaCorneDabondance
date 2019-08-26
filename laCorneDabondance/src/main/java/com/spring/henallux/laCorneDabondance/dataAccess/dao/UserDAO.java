@@ -24,6 +24,7 @@ public class UserDAO {
         UserEntity userEntity = userRepository.findByUsername(user);
 
         return userConverter.userEntityToModel(userEntity);
+
     }
 
     public void insertUser (UserModel user)

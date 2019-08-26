@@ -3,11 +3,13 @@ package com.spring.henallux.laCorneDabondance.service;
 
 import com.spring.henallux.laCorneDabondance.dataAccess.dao.CommandDAO;
 import com.spring.henallux.laCorneDabondance.dataAccess.dao.OrderLineDAO;
-import com.spring.henallux.laCorneDabondance.dataAccess.dao.ProductsDAO;
 import com.spring.henallux.laCorneDabondance.dataAccess.dao.UserDAO;
+import com.spring.henallux.laCorneDabondance.dataAccess.entity.UserEntity;
+import com.spring.henallux.laCorneDabondance.dataAccess.util.UserConverter;
 import com.spring.henallux.laCorneDabondance.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -25,6 +27,9 @@ public class CommandService {
 
     @Autowired
     private UserDAO userDAO; // A changer
+
+    @Autowired
+    private UserConverter userConverter;
 
 
     public Double calculPriceLineWithReduc (Integer quantity,ProductsModel product) {
@@ -57,7 +62,7 @@ public class CommandService {
 
     }
 
-    public void saveMarket (MarketModel market)
+    public void saveMarket (MarketModel market, UserEntity userEntity)
     {
         CommandModel commandModel = new CommandModel();
         OrderLineModel orderLineModel = new OrderLineModel();
@@ -67,13 +72,14 @@ public class CommandService {
 
         commandModel.setId(market.getIdOrder());
         commandModel.setDate(toDay);
-        commandModel.setUserModel(userDAO.findUserByLogin("bibi"));  // A changer pour test
+        UserModel userModel = userConverter.userEntityToModel(userEntity);
+        commandModel.setUserModel(userModel);
 
         commandDAO.insertCommand(commandModel);
 
         for (MarketLineModel marketLine: market.getMarketLineModel())
         {
-            orderLineModel.setId(marketLine.getIdLine()); // A changer pour démarrer depuis la bd
+            //orderLineModel.setId(marketLine.getIdLine()); // A changer pour démarrer depuis la bd
             orderLineModel.setOrderQuantity(marketLine.getQuantity());
             orderLineModel.setPrice(marketLine.getFinalPrice());
             orderLineModel.setLineNumber(marketLine.getIdLine());

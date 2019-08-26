@@ -2,7 +2,6 @@
 <%@include file="include/importTags.jsp" %>
 <%@page contentType="text/html; charset=UTF-8" %>
 
-<html lang="fr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 </head>
@@ -10,7 +9,7 @@
 <!--Container-->
 
 <div class="container-title">
-    <h1><spring:message code="detailProduct" </h1>
+    <h1><spring:message code="detailProduct"/> </h1>
     <p><h2>${detailName}</h2></p>
 
     <div class="flex-container">
